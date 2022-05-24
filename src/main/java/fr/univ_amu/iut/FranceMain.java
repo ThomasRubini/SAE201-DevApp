@@ -18,7 +18,7 @@ public class FranceMain extends Application {
     @Override
     public void init() {
         france = FranceBuilder.create()
-                //.backgroundColor(Color.web("#4aa9d7"))
+//                .backgroundColor(Color.web("#4aa9d7"))
                 //.fillColor(Color.web("#dcb36c"))
                 //.strokeColor(Color.web("#987028"))
                 //.hoverColor(Color.web("#fec47e"))
