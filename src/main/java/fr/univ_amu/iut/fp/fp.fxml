@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fp.Main">
+<AnchorPane id="root" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fp.Controller">
    <children>
       <AnchorPane prefHeight="64.0" prefWidth="600.0" style="-fx-background-color: gray;">
          <children>
-            <TextField id="barre de recherche " layoutX="114.0" layoutY="19.0" prefHeight="27.0" prefWidth="372.0" promptText="Search" style="-fx-border-color: blue; -fx-border-width: gray; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Search">
+            <TextField id="barreDeRecherche " layoutX="114.0" layoutY="19.0" prefHeight="27.0" prefWidth="372.0" promptText="Search" style="-fx-border-color: blue; -fx-border-width: gray; -fx-border-radius: 5em; -fx-background-radius: 5em;" text="Search">
                <cursor>
                   <Cursor fx:constant="CROSSHAIR" />
                </cursor>
             </TextField>
          </children>
       </AnchorPane>
-      <StackPane id="stackPaneFrance" layoutX="47.0" layoutY="125.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: blue;" />
+      <StackPane id="stackPaneFrance" fx:id="stackPaneFrance" layoutX="47.0" layoutY="125.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: blue;" />
       <StackPane layoutX="348.0" layoutY="125.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: blue;" />
    </children>
 </AnchorPane>
