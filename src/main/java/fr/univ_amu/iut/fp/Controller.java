@@ -20,8 +20,8 @@ public class Controller implements Initializable {
 
     private void initFrance() {
         france = FranceBuilder.create()
-                .backgroundColor(Color.web("FFFFFF"))
-                .fillColor(Color.web("000000"))
+                .backgroundColor(Color.web("#f5f0e1"))
+                .fillColor(Color.web("#1e3d59"))
 //                .strokeColor(Color.web("#987028"))
 //                .hoverColor(Color.web("#fec47e"))
 //                .pressedColor(Color.web("#6cee85"))
