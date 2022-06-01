@@ -1,9 +1,18 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class RegionAcademique {
+
+    private static List<RegionAcademique> INSTANCES = new ArrayList<>();
+
     @Transient
     public static RegionAcademique AuvergneRhoneAlpes = new RegionAcademique("Région académique Auvergne-Rhône-Alpes");
     @Transient
@@ -46,11 +55,23 @@ public class RegionAcademique {
     int id;
     String nom;
 
+    public RegionAcademique() {
+        INSTANCES.add(this);
+    }
     public RegionAcademique(String nom) {
+        this();
         this.nom = nom;
     }
 
-    public RegionAcademique() {
+    public static List<RegionAcademique> toutes(){
+        return INSTANCES;
+    }
+
+    public static RegionAcademique getById(int id){
+        for(RegionAcademique regionAcademique : INSTANCES){
+            if(regionAcademique.id == id)return regionAcademique;
+        }
+        return null;
     }
 
     public int getId() {

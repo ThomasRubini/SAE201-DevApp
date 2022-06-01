@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 @Entity
 public class Academie {
+
     private final static HashMap<String, Academie> INSTANCES = new HashMap<>();
     @Transient
     public static Academie Mayotte = new Academie("MY", "Académie de Mayotte", RegionAcademique.Mayotte);

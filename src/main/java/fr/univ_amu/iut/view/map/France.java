@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 import static javafx.scene.input.MouseEvent.*;
-import static javafx.scene.input.MouseEvent.MOUSE_EXITED;
 
 @DefaultProperty("children")
 public class France extends Region {

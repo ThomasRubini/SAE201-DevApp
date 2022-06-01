@@ -9,7 +9,5 @@ public interface DAOFactory {
     DAORegionAcademique createDAORegionAcademique();
     DAORessource createDAORessource();
     DAOThematique createDAOThematique();
-    DAOTypeActeur createDAOTypeActeur();
-    DAOTypeRessource createDAOTypeRessource();
     DAOUsage createDAOUsage();
 }

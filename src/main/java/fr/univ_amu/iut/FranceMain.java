@@ -1,5 +1,9 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.dao.factory.DAOFactory;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
+import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -34,6 +38,11 @@ public class FranceMain extends Application {
 
     @Override
     public void start(Stage stage) {
+
+        DAOFactory dao = DAOFactoryProducer.getFactory(DAOType.JPA);
+        Academie aca = dao.createDAOAcademie().getByCode("MY");
+        System.out.println(aca);
+
         StackPane pane = new StackPane(france);
         pane.setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
         Scene scene = new Scene(pane);
