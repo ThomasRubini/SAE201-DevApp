@@ -1,11 +1,9 @@
 package fr.univ_amu.iut.fp;
 
-import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
