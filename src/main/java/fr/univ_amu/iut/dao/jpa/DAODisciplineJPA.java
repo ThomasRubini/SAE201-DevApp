@@ -7,7 +7,6 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-// NOT JPA. No idea how to achieve it else
 public class DAODisciplineJPA extends DAOBaseClassJPA<Discipline> implements DAODiscipline {
 
 	public DAODisciplineJPA(EntityManager entityManager) {

@@ -1,6 +1,6 @@
 package fr.univ_amu.iut.dao;
 
-import fr.univ_amu.iut.model.Usage;
+import fr.univ_amu.iut.model.Usages;
 
-public interface DAOUsage extends DAO<Usage>{
+public interface DAOUsage extends DAO<Usages>{
 }

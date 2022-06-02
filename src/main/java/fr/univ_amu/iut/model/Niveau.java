@@ -1,7 +1,7 @@
 package fr.univ_amu.iut.model;
 
 public enum Niveau {
-    Tous("Tous"),
+    Tous("Tous niveaux"),
     PremierDegre("Premier degré"),
     SecondDegre("Second degré");
     final String nom;
@@ -10,5 +10,12 @@ public enum Niveau {
     }
     public String getNom() {
         return nom;
+    }
+
+    public static Niveau getByNom(String nom) {
+        for(Niveau niv : values()){
+            if(niv.nom.equals(nom))return niv;
+        }
+        return null;
     }
 }

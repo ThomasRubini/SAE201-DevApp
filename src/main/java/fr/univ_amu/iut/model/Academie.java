@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+
 @NamedQueries({
         @NamedQuery(name = "Academie.findAll", query = "SELECT p FROM Academie p"),
         @NamedQuery(name = "Academie.findByCode", query = "SELECT p FROM Academie p WHERE p.code = :acaCode"),
@@ -92,6 +94,13 @@ public class Academie {
         return INSTANCES.get(code);
     }
 
+    public static Academie getByNom(String nom) {
+        for(Academie academie : INSTANCES.values()){
+            if(academie.nom.equals(nom))return academie;
+        }
+        return null;
+    }
+
     public static Collection<Academie> toutes() {
         return INSTANCES.values();
     }
@@ -106,5 +115,14 @@ public class Academie {
 
     public RegionAcademique getRegionAcademique() {
         return regionAcademique;
+    }
+
+    @Override
+    public String toString() {
+        return "Academie{" +
+                "code='" + code + '\'' +
+                ", nom='" + nom + '\'' +
+                ", regionAcademique=" + regionAcademique +
+                '}';
     }
 }

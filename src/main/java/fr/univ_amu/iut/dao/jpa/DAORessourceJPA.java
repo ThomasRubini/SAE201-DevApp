@@ -7,7 +7,6 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-// NOT JPA. No idea how to achieve it else
 public class DAORessourceJPA extends DAOBaseClassJPA<Ressource> implements DAORessource {
 
 	public DAORessourceJPA(EntityManager entityManager) {

@@ -7,7 +7,6 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-// NOT JPA. No idea how to achieve it else
 public class DAORegionAcademiqueJPA extends DAOBaseClassJPA<RegionAcademique> implements DAORegionAcademique {
 
 	public DAORegionAcademiqueJPA(EntityManager entityManager) {
