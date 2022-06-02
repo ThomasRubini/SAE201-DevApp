@@ -13,11 +13,13 @@ public class Ressource {
     @Id
     @GeneratedValue
     int id;
+
     String nomRessource;
+
     String typeRessource;
     URL lienRessource;
 
-    public Ressource(String typeRessource, URL lienRessource) {
+    public Ressource(URL lienRessource, String nomRessource, String typeRessource) {
         this.typeRessource = typeRessource;
         this.lienRessource = lienRessource;
     }
@@ -36,5 +38,16 @@ public class Ressource {
 
     public String getNomRessource() {
         return nomRessource;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Ressource{" +
+                "id=" + id +
+                ", nomRessource='" + nomRessource + '\'' +
+                ", typeRessource='" + typeRessource + '\'' +
+                ", lienRessource=" + lienRessource +
+                '}';
     }
 }

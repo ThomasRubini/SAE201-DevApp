@@ -24,7 +24,7 @@ public class DAORessourceTest implements DAORessource {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
-            Ressource ressource = new Ressource("bah google lol", url);
+            Ressource ressource = new Ressource(url, "google", "site web");
             liste.add(ressource);
         }
         return liste;

@@ -6,16 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
-        @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
+        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usages p"),
+        @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usages p WHERE p.id = :id"),
 })
 @Entity
-public class Usage {
+public class Usages {
     @Id
     @GeneratedValue
     int id;
 
     String nom;
+
     String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -27,18 +28,18 @@ public class Usage {
     @Enumerated(EnumType.STRING)
     Niveau niveau;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     Academie academie;
 
     @OneToMany(cascade = CascadeType.ALL)
     List<Ressource> ressources = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Acteur> acteurs = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    Acteur acteur;
 
     String commentaire;
 
-    public Usage() {
+    public Usages() {
     }
 
     public String getNom() {
@@ -85,6 +86,10 @@ public class Usage {
         return academie;
     }
 
+    public void setAcademie(Academie academie) {
+        this.academie = academie;
+    }
+
     public List<Ressource> getRessources() {
         return ressources;
     }
@@ -93,12 +98,12 @@ public class Usage {
         this.ressources.add(ressource);
     }
 
-    public List<Acteur> getActeurs() {
-        return acteurs;
+    public Acteur getActeur() {
+        return acteur;
     }
 
-    public void addActeur(Acteur acteur) {
-        this.acteurs.add(acteur);
+    public void setActeur(Acteur acteur) {
+        this.acteur = acteur;
     }
 
     public String getCommentaire() {
@@ -107,5 +112,22 @@ public class Usage {
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Usage{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
+                ", discipline=" + discipline +
+                ", thematique=" + thematique +
+                ", niveau=" + niveau +
+                ", academie=" + academie +
+                ", ressources=" + ressources +
+                ", acteur=" + acteur +
+                ", commentaire='" + commentaire + '\'' +
+                '}';
     }
 }

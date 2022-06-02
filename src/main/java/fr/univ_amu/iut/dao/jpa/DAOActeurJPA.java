@@ -7,7 +7,6 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-// NOT JPA. No idea how to achieve it else
 public class DAOActeurJPA extends DAOBaseClassJPA<Acteur> implements DAOActeur {
 
 	public DAOActeurJPA(EntityManager entityManager) {

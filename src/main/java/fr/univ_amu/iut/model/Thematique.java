@@ -67,4 +67,13 @@ public class Thematique {
 
     public Thematique() {
     }
+
+
+    @Override
+    public String toString() {
+        return "Thematique{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
+    }
 }

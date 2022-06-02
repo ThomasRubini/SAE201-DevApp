@@ -12,95 +12,44 @@ public class Acteur {
     @GeneratedValue
     int id;
 
-    String nom;
-    String prenom;
+    String type;
 
-    @Embedded
-    Coordonees coordonees;
+    String identite;
 
-    String typeActeur;
+    public Acteur(String type, String identite) {
+        this.type = type;
+        this.identite = identite;
+    }
 
     public Acteur() {
-        coordonees = new Coordonees();
     }
 
     public int getId() {
         return id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getIdentite() {
+        return identite;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getType() {
+        return type;
     }
 
-    public Coordonees getCoordonees() {
-        return coordonees;
+    public void setIdentite(String identite) {
+        this.identite = identite;
     }
 
-    public String getTypeActeur() {
-        return typeActeur;
+    public void setType(String typeActeur) {
+        this.type = typeActeur;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setTypeActeur(String typeActeur) {
-        this.typeActeur = typeActeur;
-    }
-
-    public int getNumero() {
-        return coordonees.getNumero();
-    }
-
-    public void setNumero(int numero) {
-        coordonees.setNumero(numero);
-    }
-
-    public String getRue() {
-        return coordonees.getRue();
-    }
-
-    public void setRue(String rue) {
-        coordonees.setRue(rue);
-    }
-
-    public String getCodePostal() {
-        return coordonees.getCodePostal();
-    }
-
-    public void setCodePostal(String codePostal) {
-        coordonees.setCodePostal(codePostal);
-    }
-
-    public String getVille() {
-        return coordonees.getVille();
-    }
-
-    public void setVille(String ville) {
-        coordonees.setVille(ville);
-    }
-
-    public String getMail() {
-        return coordonees.getMail();
-    }
-
-    public void setMail(String mail) {
-        coordonees.setMail(mail);
-    }
-
-    public String getTelephone() {
-        return coordonees.getTelephone();
-    }
-
-    public void setTelephone(String telephone) {
-        coordonees.setTelephone(telephone);
+    @Override
+    public String toString() {
+        return "Acteur{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", identite='" + identite + '\'' +
+                '}';
     }
 }

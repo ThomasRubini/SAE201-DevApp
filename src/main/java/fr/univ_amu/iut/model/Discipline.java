@@ -39,7 +39,7 @@ public class Discipline {
         INSTANCES.add(this);
     }
 
-    Discipline(String nom) {
+    public Discipline(String nom) {
         this();
         this.nom = nom;
     }
@@ -61,5 +61,14 @@ public class Discipline {
 
     public String getNom() {
         return nom;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Discipline{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                '}';
     }
 }

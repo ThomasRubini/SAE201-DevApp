@@ -1,28 +1,27 @@
 package fr.univ_amu.iut.dao.jpa;
 
 import fr.univ_amu.iut.dao.DAOUsage;
-import fr.univ_amu.iut.model.Usage;
+import fr.univ_amu.iut.model.Usages;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-// NOT JPA. No idea how to achieve it else
-public class DAOUsageJPA extends DAOBaseClassJPA<Usage> implements DAOUsage {
+public class DAOUsageJPA extends DAOBaseClassJPA<Usages> implements DAOUsage {
 
 	public DAOUsageJPA(EntityManager entityManager) {
 		super(entityManager);
 	}
 
 	@Override
-	public List<Usage> findAll() {
-		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findAll", Usage.class);
+	public List<Usages> findAll() {
+		TypedQuery<Usages> query = entityManager.createNamedQuery("Usage.findAll", Usages.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public Usage getById(int id) {
-		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findById", Usage.class);
+	public Usages getById(int id) {
+		TypedQuery<Usages> query = entityManager.createNamedQuery("Usage.findById", Usages.class);
 		query.setParameter("numEt", id);
 		return query.getSingleResult();
 	}
