@@ -13,14 +13,11 @@ public class Ressource {
     @Id
     @GeneratedValue
     int id;
-
     String nomRessource;
-
-    @ManyToOne
-    TypeRessource typeRessource;
+    String typeRessource;
     URL lienRessource;
 
-    public Ressource(TypeRessource typeRessource, URL lienRessource) {
+    public Ressource(String typeRessource, URL lienRessource) {
         this.typeRessource = typeRessource;
         this.lienRessource = lienRessource;
     }
@@ -29,7 +26,7 @@ public class Ressource {
 
     }
 
-    public TypeRessource getTypeRessource() {
+    public String getTypeRessource() {
         return typeRessource;
     }
 

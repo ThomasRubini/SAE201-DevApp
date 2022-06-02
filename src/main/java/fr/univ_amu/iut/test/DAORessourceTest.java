@@ -1,8 +1,7 @@
-package fr.univ_amu.iut;
+package fr.univ_amu.iut.test;
 
 import fr.univ_amu.iut.dao.DAORessource;
 import fr.univ_amu.iut.model.Ressource;
-import fr.univ_amu.iut.model.TypeRessource;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,12 +15,16 @@ public class DAORessourceTest implements DAORessource {
     }
 
     @Override
-    public List<Ressource> findAll() throws MalformedURLException {
+    public List<Ressource> findAll() {
         List<Ressource> liste = new ArrayList<>();
         for (int i = 0; i < 12; i++){
-            TypeRessource type = new TypeRessource(String.valueOf(i));
-            URL url = new URL("http://google.com");
-            Ressource ressource = new Ressource(type,url);
+            URL url = null;
+            try {
+                url = new URL("http://google.com");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            Ressource ressource = new Ressource("bah google lol", url);
             liste.add(ressource);
         }
         return liste;
@@ -33,8 +36,8 @@ public class DAORessourceTest implements DAORessource {
     }
 
     @Override
-    public Ressource insert(Ressource obj) {
-        return null;
+    public boolean insert(Ressource obj) {
+        return false;
     }
 
     @Override

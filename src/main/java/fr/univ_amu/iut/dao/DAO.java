@@ -17,7 +17,7 @@ public interface DAO<T> {
      *
      * @return liste de tous les objets contenus dans la base
      */
-    List<T> findAll() throws MalformedURLException;
+    List<T> findAll();
 
     /**
      * Permet de récupérer un objet via son ID
