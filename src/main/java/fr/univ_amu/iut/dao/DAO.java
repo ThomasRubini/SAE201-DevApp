@@ -31,7 +31,7 @@ public interface DAO<T> {
      *
      * @param obj Objet à insérer dans la base
      */
-    T insert(T obj);
+    boolean insert(T obj);
 
     /**
      * Permet de mettre à jour les données d'un tuple dans la base à partir d'un

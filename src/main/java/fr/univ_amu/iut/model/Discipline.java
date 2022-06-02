@@ -5,8 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Discipline {
+
+    private static List<Discipline> INSTANCES = new ArrayList<>();
+
     @Transient
     public static Discipline Toutes = new Discipline("Toutes disciplines");
     @Transient
@@ -30,11 +36,27 @@ public class Discipline {
     String nom;
 
     public Discipline() {
-
+        INSTANCES.add(this);
     }
 
     Discipline(String nom) {
+        this();
         this.nom = nom;
+    }
+
+    public static List<Discipline> toutes() {
+        return INSTANCES;
+    }
+
+    public static Discipline getById(int id){
+		for(Discipline discipline : Discipline.toutes()) {
+            if (discipline.id == id) return discipline;
+        }
+        return null;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getNom() {
