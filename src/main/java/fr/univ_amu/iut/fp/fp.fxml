@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="root" prefHeight="798.0" prefWidth="1365.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fp.Controller">
+<AnchorPane id="root" prefHeight="798.0" prefWidth="1365.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fp.Controller">
    <children>
       <StackPane id="stackPaneFrance" fx:id="stackPaneFrance" layoutX="43.0" layoutY="92.0" prefHeight="649.0" prefWidth="642.0" style="-fx-background-color: blue;" />
       <AnchorPane layoutX="11.0" prefHeight="80.0" prefWidth="1019.0" style="-fx-background-color: #1e3d59#1e3d59;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -21,9 +18,9 @@
       </AnchorPane>
       <StackPane layoutX="744.0" layoutY="100.0" prefHeight="181.0" prefWidth="622.0" style="-fx-background-color: none;" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="100.0">
          <children>
-            <ScrollPane prefHeight="471.0" prefWidth="347.0" style="-fx-background-color: #f5f0e1;">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="471.0" prefWidth="347.0" style="-fx-background-color: #f5f0e1;">
               <content>
-                <AnchorPane id="matiere" minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
+                <AnchorPane id="ressource" fx:id="ressource" minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
                      <children>
 
                      </children>
@@ -33,9 +30,9 @@
          </children></StackPane>
       <StackPane layoutX="771.0" layoutY="370.0" prefHeight="181.0" prefWidth="622.0" style="-fx-background-color: none;" AnchorPane.rightAnchor="0.0">
          <children>
-            <ScrollPane prefHeight="471.0" prefWidth="347.0" style="-fx-background-color: #f5f0e1;">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="471.0" prefWidth="347.0" style="-fx-background-color: #f5f0e1;">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
+                  <AnchorPane id="thematique" fx:id="thematique" minHeight="0.0" minWidth="0.0" prefHeight="699.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
                      <children>
 
                      </children>
