@@ -18,16 +18,16 @@ public class FranceMain extends Application {
     @Override
     public void init() {
         france = FranceBuilder.create()
-                //.backgroundColor(Color.web("#4aa9d7"))
-                //.fillColor(Color.web("#dcb36c"))
-                //.strokeColor(Color.web("#987028"))
-                //.hoverColor(Color.web("#fec47e"))
-                //.pressedColor(Color.web("#6cee85"))
-                //.selectedColor(Color.MAGENTA)
-                .mousePressHandler(evt -> {
-                    AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
-                })
+//                .backgroundColor(Color.web("#4aa9d7"))
+//                .fillColor(Color.web("#dcb36c"))
+//                .strokeColor(Color.web("#987028"))
+//                .hoverColor(Color.web("#fec47e"))
+//                .pressedColor(Color.web("#6cee85"))
+//                .selectedColor(Color.MAGENTA)
+//                .mousePressHandler(evt -> {
+//                    AcademiePath academiePath = (AcademiePath) evt.getSource();
+//                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
+//                })
                 .selectionEnabled(true)
                 .build();
     }

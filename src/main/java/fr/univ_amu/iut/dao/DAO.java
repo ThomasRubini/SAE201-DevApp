@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.dao;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 public interface DAO<T> {
