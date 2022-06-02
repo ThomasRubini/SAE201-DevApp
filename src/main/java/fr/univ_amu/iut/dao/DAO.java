@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.dao;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 public interface DAO<T> {
@@ -16,7 +17,7 @@ public interface DAO<T> {
      *
      * @return liste de tous les objets contenus dans la base
      */
-    List<T> findAll();
+    List<T> findAll() throws MalformedURLException;
 
     /**
      * Permet de récupérer un objet via son ID
