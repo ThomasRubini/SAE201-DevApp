@@ -7,9 +7,9 @@
 
         <properties>
             <!-- database connection properties -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:usageBD;create=true"/>
-            <property name="jakarta.persistence.jdbc.user" value=""/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/devapp"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="azerty123"/>
 
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>

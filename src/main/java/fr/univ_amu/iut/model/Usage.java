@@ -3,9 +3,12 @@ package fr.univ_amu.iut.model;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
+        @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
+})
 @Entity
 public class Usage {
     @Id
@@ -24,8 +27,8 @@ public class Usage {
     @Enumerated(EnumType.STRING)
     Niveau niveau;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Academie> academies = new ArrayList<>();
+    @OneToOne
+    Academie academie;
 
     @OneToMany(cascade = CascadeType.ALL)
     List<Ressource> ressources = new ArrayList<>();
@@ -78,15 +81,8 @@ public class Usage {
         this.niveau = niveau;
     }
 
-    public List<Academie> getAcademies() {
-        return academies;
-    }
-
-    public void addAcademies(Academie ... academies) {
-        this.academies.addAll(List.of(academies));
-    }
-    public void addAcademies(Collection<? extends Academie> academies){
-        this.academies.addAll(academies);
+    public Academie getAcademie() {
+        return academie;
     }
 
     public List<Ressource> getRessources() {

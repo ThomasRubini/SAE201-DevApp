@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 
 import java.util.Collection;
 import java.util.HashMap;
-
+@NamedQueries({
+        @NamedQuery(name = "Academie.findAll", query = "SELECT p FROM Academie p"),
+        @NamedQuery(name = "Academie.findByCode", query = "SELECT p FROM Academie p WHERE p.code = :acaCode"),
+})
 @Entity
 public class Academie {
     private final static HashMap<String, Academie> INSTANCES = new HashMap<>();

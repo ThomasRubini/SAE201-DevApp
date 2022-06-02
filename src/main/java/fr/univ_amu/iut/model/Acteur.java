@@ -18,12 +18,10 @@ public class Acteur {
     @Embedded
     Coordonees coordonees;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    TypeActeur typeActeur;
+    String typeActeur;
 
     public Acteur() {
         coordonees = new Coordonees();
-        typeActeur = new TypeActeur();
     }
 
     public int getId() {
@@ -43,7 +41,7 @@ public class Acteur {
     }
 
     public String getTypeActeur() {
-        return typeActeur.nom;
+        return typeActeur;
     }
 
     public void setNom(String nom) {
@@ -55,7 +53,7 @@ public class Acteur {
     }
 
     public void setTypeActeur(String typeActeur) {
-        this.typeActeur.setNom(typeActeur);
+        this.typeActeur = typeActeur;
     }
 
     public int getNumero() {
