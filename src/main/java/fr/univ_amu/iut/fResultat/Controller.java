@@ -44,7 +44,6 @@ public class Controller implements Initializable{
         Disciplines.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Disciplines"));
         Types.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Types"));
         Niveaux.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Niveaux"));
-
         Table.setItems(list);
 
 

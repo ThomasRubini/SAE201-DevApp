@@ -1,18 +1,23 @@
 package fr.univ_amu.iut;
 
+import java.io.IOException;
+
+import fr.univ_amu.iut.screenController.ScreenController;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class FranceMain extends Application {
+public class Main extends Application {
     France france;
 
     @Override
@@ -33,10 +38,12 @@ public class FranceMain extends Application {
     }
 
     @Override
-    public void start(Stage stage) {
-        StackPane pane = new StackPane(france);
-        pane.setBackground(new Background(new BackgroundFill(france.getBackgroundColor(), CornerRadii.EMPTY, Insets.EMPTY)));
-        Scene scene = new Scene(pane);
+    public void start(Stage stage) throws IOException {
+        Scene scene = new Scene(new Pane());
+        ScreenController gestionnaireDePages = new ScreenController(scene);
+        gestionnaireDePages.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
+        gestionnaireDePages.addScreen("Resultats",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml")));;
+        gestionnaireDePages.activate("Resultats");
         stage.setTitle("Carte des académie");
         stage.setScene(scene);
         stage.show();

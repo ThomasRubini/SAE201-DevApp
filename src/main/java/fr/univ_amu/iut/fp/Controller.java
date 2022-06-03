@@ -98,7 +98,6 @@ public class Controller implements Initializable {
                 thematique.getChildren().add(initButton(thematiques.get(i).getNom(),332,i/2*130));
             }
         }
-
         return null;
     }
 
@@ -115,9 +114,6 @@ public class Controller implements Initializable {
         // a chaque fois
         List<Ressource> l = daoRessource.findAll();
         List<Thematique> t = daoThematique.findAll();
-
-        System.out.println(l);
-
 
         placeButtonThematique();
         placeButtonRessource();
