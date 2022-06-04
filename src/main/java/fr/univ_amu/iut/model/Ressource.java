@@ -2,6 +2,7 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 @NamedQueries({
@@ -16,10 +17,24 @@ public class Ressource {
 
     String nomRessource;
 
-    String typeRessource;
     URL lienRessource;
 
-    public Ressource(URL lienRessource, String nomRessource, String typeRessource) {
+    String typeRessource;
+
+    private static URL convertUrl(String url){
+        try{
+            return new URL(url);
+        }catch(MalformedURLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Ressource(String nomRessource, String lienRessource, String typeRessource) {
+        this(nomRessource, convertUrl(lienRessource), typeRessource);
+    }
+    public Ressource(String nomRessource, URL lienRessource, String typeRessource) {
+        this.nomRessource = nomRessource;
         this.typeRessource = typeRessource;
         this.lienRessource = lienRessource;
     }

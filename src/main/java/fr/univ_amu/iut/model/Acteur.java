@@ -12,11 +12,11 @@ public class Acteur {
     @GeneratedValue
     int id;
 
-    String type;
-
     String identite;
 
-    public Acteur(String type, String identite) {
+    String type;
+
+    public Acteur(String identite, String type) {
         this.type = type;
         this.identite = identite;
     }
