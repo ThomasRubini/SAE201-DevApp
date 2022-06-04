@@ -1,14 +1,24 @@
 package fr.univ_amu.iut;
 
+import java.util.List;
+
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
+import fr.univ_amu.iut.model.Usage;
 
 public class Donnees {
     private static Academie academieSelectionee = null;
     private static Thematique thematiqueSelectionee = null;
     private static Discipline disciplineSelectionee = Discipline.Toutes;
-   
+    private static List<Usage> usagesObtenus;
+
+    public static List<Usage> getUsagesObtenus() {
+        return usagesObtenus;
+    }
+    public static void setUsagesObtenus(List<Usage> usagesObtenus) {
+        Donnees.usagesObtenus = usagesObtenus;
+    }
     public static Academie getAcademieSelectionee() {
         return academieSelectionee;
     }

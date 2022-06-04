@@ -4,16 +4,19 @@ import fr.univ_amu.iut.Donnees;
 import fr.univ_amu.iut.dao.DAODiscipline;
 import fr.univ_amu.iut.dao.DAORessource;
 import fr.univ_amu.iut.dao.DAOThematique;
+import fr.univ_amu.iut.dao.DAOUsage;
 import fr.univ_amu.iut.dao.factory.DAOFactory;
 import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
+import fr.univ_amu.iut.screenController.ScreenController;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -30,6 +33,7 @@ public class Controller implements Initializable {
     DAOFactory daoFactory;
     DAODiscipline daoDiscipline;
     DAOThematique daoThematique;
+    DAOUsage daoUsage;
 
     @FXML
     private Pane stackPaneFrance;
@@ -39,6 +43,9 @@ public class Controller implements Initializable {
 
     @FXML
     private AnchorPane thematique;
+
+    @FXML
+    private Button recherche;
 
     private void initFrance() {
         france = FranceBuilder.create()
@@ -141,6 +148,7 @@ public class Controller implements Initializable {
         daoFactory = DAOFactoryProducer.getFactory(DAOType.TEST);
         daoDiscipline = daoFactory.createDAODiscipline();
         daoThematique = daoFactory.createDAOThematique();
+        daoUsage = daoFactory.createDAOUsage();
 
         // a chaque fois
         
@@ -149,6 +157,13 @@ public class Controller implements Initializable {
 
         placeButtonThematique();
         placeButtonDiscipline();
+        EventHandler<ActionEvent> handler = event ->{
+            //TODO Recherche en fonctions des objets selectionnés
+            Donnees.setUsagesObtenus(daoUsage.findAll());
+
+            ScreenController.activate("Resultats");
+        };
+        recherche.setOnAction(handler);
 //        matiere.getChildren().add(initButton(t.get(0).getNom(),38,30));
 //        matiere.getChildren().add(initButton("test",38,160));
     }

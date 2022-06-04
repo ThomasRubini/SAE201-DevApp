@@ -37,6 +37,6 @@ public class DAOFactoryTest implements DAOFactory {
 
     @Override
     public DAOUsage createDAOUsage() {
-        return null;
+        return new DAOUsageTest();
     }
 }

@@ -41,6 +41,6 @@
             </ScrollPane>
          </children>
       </StackPane>
-      <Button layoutX="875.0" layoutY="606.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="337.0" style="-fx-background-radius: 50; -fx-background-color: #ffc13b#ffc13b;" text="RECHERCHER" AnchorPane.bottomAnchor="72.0" AnchorPane.rightAnchor="153.0" />
+      <Button id="recherche" fx:id="recherche" layoutX="875.0" layoutY="606.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="337.0" style="-fx-background-radius: 50; -fx-background-color: #ffc13b#ffc13b;" text="RECHERCHER" AnchorPane.bottomAnchor="72.0" AnchorPane.rightAnchor="153.0" />
    </children>
 </AnchorPane>
