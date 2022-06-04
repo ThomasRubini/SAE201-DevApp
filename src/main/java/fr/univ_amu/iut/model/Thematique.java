@@ -1,12 +1,18 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 @Entity
 public class Thematique {
+
+
+    private final static List<Thematique> INSTANCES = new ArrayList<>();
+
     @Transient
     public static Thematique ClasseInversee= new Thematique("Classe inversée");
     @Transient
@@ -55,6 +61,8 @@ public class Thematique {
     @Id
     @GeneratedValue
     int id;
+
+    @Column(unique = true)
     String nom;
 
     public String getNom() {
@@ -63,11 +71,15 @@ public class Thematique {
 
     public Thematique(String nom) {
         this.nom = nom;
+        INSTANCES.add(this);
     }
 
     public Thematique() {
     }
 
+    public static List<Thematique> toutes(){
+        return INSTANCES;
+    }
 
     @Override
     public String toString() {

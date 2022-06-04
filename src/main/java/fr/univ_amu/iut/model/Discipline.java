@@ -1,9 +1,6 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +8,7 @@ import java.util.List;
 @Entity
 public class Discipline {
 
-    private static List<Discipline> INSTANCES = new ArrayList<>();
+    private static final List<Discipline> INSTANCES = new ArrayList<>();
 
     @Transient
     public static Discipline Toutes = new Discipline("Toutes disciplines");
@@ -33,6 +30,8 @@ public class Discipline {
     @Id
     @GeneratedValue
     int id;
+
+    @Column(unique = true)
     String nom;
 
     public Discipline() {

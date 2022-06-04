@@ -50,6 +50,8 @@ public class RegionAcademique {
     @Id
     @GeneratedValue
     int id;
+
+    @Column(unique = true)
     String nom;
 
     public RegionAcademique() {
