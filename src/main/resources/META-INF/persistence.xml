@@ -8,8 +8,9 @@
         <properties>
             <!-- database connection properties -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/devapp"/>
-            <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="jakarta.persistence.jdbc.password" value="azerty123"/>
+            <property name="jakarta.persistence.jdbc.user" value="devapp"/>
+            <property name="jakarta.persistence.jdbc.password" value="7kPoWBgoV5ahygxyXYGzaL"/>
+            <!-- Nous ne devrions pas commit le mot de passe dans le dépot, mais... je ne pense pas que le projet ne respecte la moindre règle de sécurité de toute facon (pas d'architecture trois tiers)-->
 
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
