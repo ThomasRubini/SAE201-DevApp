@@ -1,11 +1,13 @@
 package fr.univ_amu.iut.fp;
 
+import fr.univ_amu.iut.Donnees;
+import fr.univ_amu.iut.dao.DAODiscipline;
 import fr.univ_amu.iut.dao.DAORessource;
 import fr.univ_amu.iut.dao.DAOThematique;
 import fr.univ_amu.iut.dao.factory.DAOFactory;
 import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
 import fr.univ_amu.iut.dao.factory.DAOType;
-import fr.univ_amu.iut.model.Ressource;
+import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -15,7 +17,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,14 +28,14 @@ public class Controller implements Initializable {
 
 
     DAOFactory daoFactory;
-    DAORessource daoRessource;
+    DAODiscipline daoDiscipline;
     DAOThematique daoThematique;
 
     @FXML
     private Pane stackPaneFrance;
 
     @FXML
-    private AnchorPane ressource;
+    private AnchorPane discipline;
 
     @FXML
     private AnchorPane thematique;
@@ -58,29 +61,57 @@ public class Controller implements Initializable {
                         <Button layoutX="332.0" layoutY="30.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="235.0" style="-fx-background-radius: 30; -fx-background-color: #ff6e40#ff6e40;" text="Button" />*/
 
 
-    private Button initButton(String ressource,int x,int y){
-        Button bt = new Button(ressource);
+    private Button initButton(Object obj,int x,int y){
+        String nom = "";
+        EventHandler<ActionEvent> handler;
+        if ( obj instanceof Discipline ){
+            Discipline disciplineActuelle = (Discipline) obj;
+            nom = disciplineActuelle.getNom();
+            handler = event -> {
+                if (Donnees.getDisciplineSelectionee().equals(disciplineActuelle)){
+                    Donnees.setDisciplineSelectionee(Discipline.Toutes);
+                }
+                else{
+                    Donnees.setDisciplineSelectionee(disciplineActuelle);
+                }
+            };
+        }
+        else{
+            Thematique thematiqueActuelle = (Thematique) obj;
+            handler = event -> {
+                if (Donnees.getThematiqueSelectionee() == null || !(Donnees.getThematiqueSelectionee().equals(obj))){
+                    Donnees.setThematiqueSelectionee(thematiqueActuelle);
+                }
+                else{
+                    Donnees.setThematiqueSelectionee(null);
+                }
+            };
+            nom = thematiqueActuelle.getNom();
+        }
+
+        Button bt = new Button(nom);
         bt.setMnemonicParsing(false);
         bt.setMinSize(235,115);
         bt.layoutXProperty().setValue(x);
         bt.layoutYProperty().setValue(y);
-        bt.setId(ressource);
+        bt.setId(nom);
         bt.prefHeight(115);
         bt.prefWidth(235);
-        bt.setText(ressource);
+        bt.setText(nom);
         bt.setBackground(new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY)));
+        bt.setOnAction(handler);
         return bt;
     }
 
-    private Void placeButtonRessource(){
-        List<Ressource> ressources = daoRessource.findAll();
-        ressource.setMinHeight(ressources.size()*65);
-        for (int i = 0;i<ressources.size();++i){
+    private Void placeButtonDiscipline(){
+        List<Discipline> disciplines = daoDiscipline.findAll();
+        discipline.setMinHeight(disciplines.size()*65);
+        for (int i = 0;i<disciplines.size();++i){
             if (i%2 == 0){
-                ressource.getChildren().add(initButton(ressources.get(i).getNomRessource(),38,i/2*130));
+                discipline.getChildren().add(initButton(disciplines.get(i),38,i/2*130));
             }
             else {
-                ressource.getChildren().add(initButton(ressources.get(i).getNomRessource(),332,i/2*130));
+                discipline.getChildren().add(initButton(disciplines.get(i),332,i/2*130));
             }
         }
 
@@ -92,10 +123,10 @@ public class Controller implements Initializable {
         thematique.setMinHeight(thematiques.size()*65);
         for (int i = 0;i<thematiques.size();++i){
             if (i%2 == 0){
-                thematique.getChildren().add(initButton(thematiques.get(i).getNom(),38,i/2*130));
+                thematique.getChildren().add(initButton(thematiques.get(i),38,i/2*130));
             }
             else {
-                thematique.getChildren().add(initButton(thematiques.get(i).getNom(),332,i/2*130));
+                thematique.getChildren().add(initButton(thematiques.get(i),332,i/2*130));
             }
         }
         return null;
@@ -108,15 +139,16 @@ public class Controller implements Initializable {
 
         // init
         daoFactory = DAOFactoryProducer.getFactory(DAOType.TEST);
-        daoRessource = daoFactory.createDAORessource();
+        daoDiscipline = daoFactory.createDAODiscipline();
         daoThematique = daoFactory.createDAOThematique();
 
         // a chaque fois
-        List<Ressource> l = daoRessource.findAll();
+        
+        List<Discipline> d = daoDiscipline.findAll();
         List<Thematique> t = daoThematique.findAll();
 
         placeButtonThematique();
-        placeButtonRessource();
+        placeButtonDiscipline();
 //        matiere.getChildren().add(initButton(t.get(0).getNom(),38,30));
 //        matiere.getChildren().add(initButton("test",38,160));
     }

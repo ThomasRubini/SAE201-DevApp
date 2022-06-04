@@ -6,18 +6,18 @@ import javafx.scene.*;
 import javafx.scene.layout.Pane;
 
 public class ScreenController {
-    private HashMap<String, Pane> screenMap = new HashMap<>();
-    private Scene main;
+    private static HashMap<String, Pane> screenMap = new HashMap<>();
+    private static Scene main;
 
     public ScreenController(Scene main) {
-        this.main = main;
+        ScreenController.main = main;
     }
 
-    public void addScreen(String name, Pane pane){
-         screenMap.put(name, pane);
+    public static void addScreen(String name, Pane pane){
+        screenMap.put(name, pane);
     }
 
-    public void activate(String name){
+    public static void activate(String name){
         main.setRoot( screenMap.get(name) );
     }
 }

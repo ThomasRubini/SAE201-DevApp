@@ -20,7 +20,7 @@
          <children>
             <ScrollPane hbarPolicy="NEVER" prefHeight="471.0" prefWidth="347.0" style="-fx-background-color: #f5f0e1;">
               <content>
-                <AnchorPane id="ressource" fx:id="ressource" minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
+                <AnchorPane id="discipline" fx:id="discipline" minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="620.0" style="-fx-background-color: #f5f0e1#f5f0e1;">
                      <children>
 
                      </children>

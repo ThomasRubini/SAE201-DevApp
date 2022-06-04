@@ -17,7 +17,7 @@ public class DAOFactoryTest implements DAOFactory {
 
     @Override
     public DAODiscipline createDAODiscipline() {
-        return null;
+        return new DAODisciplineTest();
     }
 
     @Override

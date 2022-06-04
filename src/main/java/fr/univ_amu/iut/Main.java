@@ -8,42 +8,36 @@ import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     France france;
+    private Scene scene = new Scene(new Pane());
+    private ScreenController gestionnaireDePages = new ScreenController(scene);
 
     @Override
-    public void init() {
+    public void init() throws IOException {
         france = FranceBuilder.create()
-//                .backgroundColor(Color.web("#4aa9d7"))
-//                .fillColor(Color.web("#dcb36c"))
-//                .strokeColor(Color.web("#987028"))
-//                .hoverColor(Color.web("#fec47e"))
-//                .pressedColor(Color.web("#6cee85"))
-//                .selectedColor(Color.MAGENTA)
-//                .mousePressHandler(evt -> {
-//                    AcademiePath academiePath = (AcademiePath) evt.getSource();
-//                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
-//                })
+                .selectedColor(Color.MAGENTA)
+                .mousePressHandler(evt -> {
+                    AcademiePath academiePath = (AcademiePath) evt.getSource();
+                    Donnees.setAcademieSelectionee(academiePath.getAcademie());
+                })
                 .selectionEnabled(true)
                 .build();
+        
+        
+        ScreenController.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
+        ScreenController.addScreen("Resultats",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml")));;
+        ScreenController.activate("Acceuil");
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(new Pane());
-        ScreenController gestionnaireDePages = new ScreenController(scene);
-        gestionnaireDePages.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
-        gestionnaireDePages.addScreen("Resultats",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml")));;
-        gestionnaireDePages.activate("Resultats");
+    public void start(Stage stage){
         stage.setTitle("Carte des académie");
         stage.setScene(scene);
         stage.show();
