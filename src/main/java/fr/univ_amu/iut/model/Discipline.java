@@ -2,11 +2,16 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "Discipline.findAll", query = "SELECT p FROM Discipline p"),
+        @NamedQuery(name = "Discipline.findById", query = "SELECT p FROM Discipline p WHERE p.id = :id"),
+})
 @Entity
-public class Discipline {
+public class Discipline implements Serializable {
 
     private static final List<Discipline> INSTANCES = new ArrayList<>();
 
@@ -44,7 +49,7 @@ public class Discipline {
     }
 
     public static List<Discipline> toutes() {
-        return INSTANCES;
+        return new ArrayList<>(INSTANCES);
     }
 
     public static Discipline getById(int id){
@@ -69,5 +74,23 @@ public class Discipline {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Discipline that = (Discipline) o;
+
+        if (id != that.id) return false;
+        return nom.equals(that.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + nom.hashCode();
+        return result;
     }
 }

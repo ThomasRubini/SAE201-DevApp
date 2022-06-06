@@ -2,6 +2,7 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -10,7 +11,7 @@ import java.net.URL;
         @NamedQuery(name = "Ressource.findById", query = "SELECT p FROM Ressource p WHERE p.id = :id"),
 })
 @Entity
-public class Ressource {
+public class Ressource implements Serializable {
     @Id
     @GeneratedValue
     int id;
@@ -64,5 +65,20 @@ public class Ressource {
                 ", typeRessource='" + typeRessource + '\'' +
                 ", lienRessource=" + lienRessource +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ressource ressource = (Ressource) o;
+
+        return id == ressource.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

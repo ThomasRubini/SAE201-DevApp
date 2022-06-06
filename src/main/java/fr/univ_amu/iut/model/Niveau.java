@@ -18,4 +18,12 @@ public enum Niveau {
         }
         return null;
     }
+
+
+    @Override
+    public String toString() {
+        return "Niveau{" +
+                "nom='" + nom + '\'' +
+                '}';
+    }
 }
