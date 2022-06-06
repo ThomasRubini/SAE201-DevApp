@@ -8,7 +8,6 @@ import fr.univ_amu.iut.model.Usage;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.io.DataInput;
 import java.util.List;
 
 public class DAOUsageJPA extends DAOBaseClassJPA<Usage> implements DAOUsage {
@@ -31,11 +30,19 @@ public class DAOUsageJPA extends DAOBaseClassJPA<Usage> implements DAOUsage {
 	}
 
 	@Override
-	public List<Usage> search(Thematique thematique, Discipline discipline, Academie academie) {
-		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.search", Usage.class);
+	public List<Usage> findByCriterias(Thematique thematique, Discipline discipline, Academie academie) {
+		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findByCriterias", Usage.class);
 		query.setParameter("thematique", thematique);
 		query.setParameter("discipline", discipline);
 		query.setParameter("academie", academie);
+		return query.getResultList();
+	}
+
+
+	@Override
+	public List<Usage> findByName(String substring) {
+		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findByName", Usage.class);
+		query.setParameter("substring", "%"+substring+"%");
 		return query.getResultList();
 	}
 }

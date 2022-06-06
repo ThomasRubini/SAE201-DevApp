@@ -8,5 +8,6 @@ import fr.univ_amu.iut.model.Usage;
 import java.util.List;
 
 public interface DAOUsage extends DAO<Usage>{
-	List<Usage> search(Thematique thematique, Discipline discipline, Academie academie);
+	List<Usage> findByCriterias(Thematique thematique, Discipline discipline, Academie academie);
+	List<Usage> findByName(String substring);
 }
