@@ -2,13 +2,18 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "Thematique.findAll", query = "SELECT p FROM Thematique p"),
+        @NamedQuery(name = "Thematique.findById", query = "SELECT p FROM Thematique p WHERE p.id = :id"),
+})
 @Entity
-public class Thematique {
+public class Thematique implements Serializable {
 
 
     private final static List<Thematique> INSTANCES = new ArrayList<>();
@@ -87,5 +92,23 @@ public class Thematique {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Thematique that = (Thematique) o;
+
+        if (id != that.id) return false;
+        return nom.equals(that.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + nom.hashCode();
+        return result;
     }
 }

@@ -2,6 +2,7 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
         @NamedQuery(name = "Academie.findByCode", query = "SELECT p FROM Academie p WHERE p.code = :acaCode"),
 })
 @Entity
-public class Academie {
+public class Academie implements Serializable {
     private final static HashMap<String, Academie> INSTANCES = new HashMap<>();
     @Transient
     public static Academie Mayotte = new Academie("MY", "Académie de Mayotte", RegionAcademique.Mayotte);
@@ -124,5 +125,20 @@ public class Academie {
                 ", nom='" + nom + '\'' +
                 ", regionAcademique=" + regionAcademique +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Academie academie = (Academie) o;
+
+        return code.equals(academie.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return code.hashCode();
     }
 }
