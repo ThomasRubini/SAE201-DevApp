@@ -11,25 +11,31 @@ import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Thematique;
 import fr.univ_amu.iut.screenController.ScreenController;
+import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     France france;
-
-
+    EventHandler<MouseEvent> onEnterHandler;
+    EventHandler<MouseEvent> onExitHandler;
     DAOFactory daoFactory;
     DAODiscipline daoDiscipline;
     DAOThematique daoThematique;
@@ -47,55 +53,64 @@ public class Controller implements Initializable {
     @FXML
     private Button recherche;
 
+    // Style des boutons
+    Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY));
+    Background btNormalHover = new Background(new BackgroundFill(Color.rgb(255,152,120), new CornerRadii(30), Insets.EMPTY));
+    Background btNormalSelected = new Background(new BackgroundFill(Color.rgb(255,60,0), new CornerRadii(30), Insets.EMPTY));
+
     private void initFrance() {
         france = FranceBuilder.create()
                 .backgroundColor(Color.web("#f5f0e1"))
                 .fillColor(Color.web("#1e3d59"))
-//                .strokeColor(Color.web("#987028"))
-//                .hoverColor(Color.web("#fec47e"))
-//                .pressedColor(Color.web("#6cee85"))
-//                .selectedColor(Color.MAGENTA)
-//                .mousePressHandler(evt -> {
-//                    AcademiePath academiePath = (AcademiePath) evt.getSource();
-//                    System.out.println("On vient de cliquer sur l'"+academiePath.getAcademie().getNom());
-//                })
+                .mousePressHandler(evt -> {
+                   AcademiePath academiePath = (AcademiePath) evt.getSource();
+                   Donnees.setAcademieSelectionee(academiePath.getAcademie());
+                })
                 .selectionEnabled(true)
                 .build();
     }
 
-
-    /*<Button layoutX="38.0" layoutY="30.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="235.0" style="-fx-background-radius: 30; -fx-background-color: #ff6e40;" text="Button" />
-                        <Button layoutX="332.0" layoutY="30.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="235.0" style="-fx-background-radius: 30; -fx-background-color: #ff6e40#ff6e40;" text="Button" />*/
-
-
     private Button initButton(Object obj,int x,int y){
         String nom = "";
-        EventHandler<ActionEvent> handler;
+        
+        EventHandler<ActionEvent> actionHandler;
+        EventHandler<MouseEvent> onPressHandler;
+        
+        onEnterHandler = evt -> {
+           Button bt = (Button) evt.getSource();
+           bt.setBackground(btNormalHover);
+        };
+        
+        onExitHandler= evt -> {
+            Button bt = (Button) evt.getSource();
+            bt.setBackground(btNormalBackground);
+        };
+
+        onPressHandler = event -> {
+            Button bt = (Button) event.getSource();
+            if(bt.getBackground().equals(btNormalSelected)){
+                bt.setBackground(btNormalHover);
+                bt.setOnMouseEntered(onEnterHandler);
+                bt.setOnMouseExited(onExitHandler);
+            }
+            else{
+                bt.setBackground(btNormalSelected);
+                bt.setOnMouseEntered(null);
+                bt.setOnMouseExited(null);
+            }
+        };
+
         if ( obj instanceof Discipline ){
             Discipline disciplineActuelle = (Discipline) obj;
             nom = disciplineActuelle.getNom();
-            handler = event -> {
-                if (Donnees.getDisciplineSelectionee().equals(disciplineActuelle)){
-                    Donnees.setDisciplineSelectionee(Discipline.Toutes);
-                }
-                else{
-                    Donnees.setDisciplineSelectionee(disciplineActuelle);
-                }
-            };
+            actionHandler = event -> {Donnees.setDisciplineSelectionee(disciplineActuelle);};
         }
         else{
             Thematique thematiqueActuelle = (Thematique) obj;
-            handler = event -> {
-                if (Donnees.getThematiqueSelectionee() == null || !(Donnees.getThematiqueSelectionee().equals(obj))){
-                    Donnees.setThematiqueSelectionee(thematiqueActuelle);
-                }
-                else{
-                    Donnees.setThematiqueSelectionee(null);
-                }
-            };
             nom = thematiqueActuelle.getNom();
+            actionHandler = event -> {Donnees.setThematiqueSelectionee(thematiqueActuelle);};
         }
-
+        
         Button bt = new Button(nom);
         bt.setMnemonicParsing(false);
         bt.setMinSize(235,115);
@@ -105,8 +120,11 @@ public class Controller implements Initializable {
         bt.prefHeight(115);
         bt.prefWidth(235);
         bt.setText(nom);
-        bt.setBackground(new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY)));
-        bt.setOnAction(handler);
+        bt.setBackground(btNormalBackground);
+        bt.setOnAction(actionHandler);
+        bt.setOnMouseClicked(onPressHandler);
+        bt.setOnMouseEntered(onEnterHandler);
+        bt.setOnMouseExited(onExitHandler);
         return bt;
     }
 
@@ -160,11 +178,16 @@ public class Controller implements Initializable {
         EventHandler<ActionEvent> handler = event ->{
             //TODO Recherche en fonctions des objets selectionnés
             Donnees.setUsagesObtenus(daoUsage.findAll());
-
-            ScreenController.activate("Resultats");
+            
+            Stage resultats = new Stage();
+            try {
+                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
+                resultats.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
         };
         recherche.setOnAction(handler);
-//        matiere.getChildren().add(initButton(t.get(0).getNom(),38,30));
-//        matiere.getChildren().add(initButton("test",38,160));
     }
 }

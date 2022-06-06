@@ -23,13 +23,19 @@ public class Donnees {
         return academieSelectionee;
     }
     public static void setAcademieSelectionee(Academie academieSelectionee) {
-        System.out.println("Academie Selectionée : %s".formatted(academieSelectionee.getNom()));
+        if (academieSelectionee.equals(Donnees.academieSelectionee)){
+            academieSelectionee = null;
+        }
+        System.out.println("Academie Selectionée : %s".formatted((academieSelectionee == null)?"Aucune academie":academieSelectionee.getNom()));
         Donnees.academieSelectionee = academieSelectionee;
     }
     public static Thematique getThematiqueSelectionee() {
         return thematiqueSelectionee;
     }
     public static void setThematiqueSelectionee(Thematique thematiqueSelectionee) {
+        if(thematiqueSelectionee == Donnees.thematiqueSelectionee){
+            thematiqueSelectionee = null;
+        }
         System.out.println("Thematique selectionée : %s".formatted((thematiqueSelectionee == null)? "Aucune Thematique" : thematiqueSelectionee.getNom()));
         Donnees.thematiqueSelectionee = thematiqueSelectionee;
     }
@@ -37,9 +43,13 @@ public class Donnees {
         return disciplineSelectionee;
     }
     public static void setDisciplineSelectionee(Discipline disciplineSelectionee) {
+        if(disciplineSelectionee == Donnees.disciplineSelectionee){
+            disciplineSelectionee = Discipline.Toutes;
+        }
         System.out.println("Discipline Selectionee : %s".formatted(disciplineSelectionee.getNom()));
         Donnees.disciplineSelectionee = disciplineSelectionee;
     }
+
 
     
 }

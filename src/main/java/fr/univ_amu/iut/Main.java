@@ -20,24 +20,14 @@ public class Main extends Application {
     private ScreenController gestionnaireDePages = new ScreenController(scene);
 
     @Override
-    public void init() throws IOException {
-        france = FranceBuilder.create()
-                .selectedColor(Color.MAGENTA)
-                .mousePressHandler(evt -> {
-                    AcademiePath academiePath = (AcademiePath) evt.getSource();
-                    Donnees.setAcademieSelectionee(academiePath.getAcademie());
-                })
-                .selectionEnabled(true)
-                .build();
-        
-        
+    public void start(Stage stage) throws IOException{
         ScreenController.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
-        ScreenController.addScreen("Resultats",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml")));;
+        
+        //TODO Ajouter les pages d'admin pour l'ajout des usages
+        //ScreenController.addScreen("admin1",pane);
+        //ScreenController.addScreen("admin2",pane);
+        
         ScreenController.activate("Acceuil");
-    }
-
-    @Override
-    public void start(Stage stage){
         stage.setTitle("Carte des académie");
         stage.setScene(scene);
         stage.show();

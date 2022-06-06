@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import fr.univ_amu.iut.Donnees;
-import fr.univ_amu.iut.model.Discipline;
-import fr.univ_amu.iut.model.Niveau;
 import fr.univ_amu.iut.model.Usage;
 
 public class Controller implements Initializable{
@@ -38,15 +36,13 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         
-        
-        // TODO MOVE THIS INTO A LISTENER THAT ACTUALLY WORKS
-        // List<TableEntry> entries = new ArrayList<>();
-        // for (Usage usage: Donnees.getUsagesObtenus()){
-        //     entries.add(new TableEntry(usage));
-        // }
-        // ObservableList<TableEntry> tableEntries = FXCollections.observableArrayList(entries);
 
-        // table.setItems(tableEntries);
+        List<TableEntry> entries = new ArrayList<>();
+        for (Usage usage: Donnees.getUsagesObtenus()){
+            entries.add(new TableEntry(usage));
+        }
+        ObservableList<TableEntry> tableEntries = FXCollections.observableArrayList(entries);
+        table.setItems(tableEntries);
         
         nom.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("nom"));
         discipline.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("discipline"));
