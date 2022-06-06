@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI/CD with Maven
 
 on:
   - push
@@ -15,7 +15,13 @@ jobs:
         distribution: 'zulu'
         java-package: 'jdk+fx'
         cache: maven
-    - name: Run headless test
+    - name: Build and run headless test
       uses: GabrielBB/xvfb-action@v1
       with:
         run: mvn -B package --file pom.xml
+
+    - name: Upload resulting executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: jar file
+        path: target/sae201-1.0-SNAPSHOT.jar
