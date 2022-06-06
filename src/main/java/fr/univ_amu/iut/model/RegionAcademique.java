@@ -2,11 +2,16 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "RegionAcademique.findAll", query = "SELECT p FROM RegionAcademique p"),
+        @NamedQuery(name = "RegionAcademique.findById", query = "SELECT p FROM RegionAcademique p WHERE p.id = :id"),
+})
 @Entity
-public class RegionAcademique {
+public class RegionAcademique implements Serializable {
 
     private static List<RegionAcademique> INSTANCES = new ArrayList<>();
 
@@ -79,5 +84,24 @@ public class RegionAcademique {
 
     public String getNom() {
         return nom;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RegionAcademique that = (RegionAcademique) o;
+
+        if (id != that.id) return false;
+        return nom.equals(that.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + nom.hashCode();
+        return result;
     }
 }

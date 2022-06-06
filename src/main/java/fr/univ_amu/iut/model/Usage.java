@@ -2,17 +2,23 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @NamedQueries({
         @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
         @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
+        @NamedQuery(name = "Usage.findByName", query = "SELECT p FROM Usage p WHERE p.nom LIKE '%:id%'"),
+        @NamedQuery(name = "Usage.search", query = "SELECT p FROM Usage p WHERE" +
+                "(:thematique is null or :thematique=p.thematique)" +
+                "AND (:discipline is null or :discipline=p.discipline)"+
+                "AND (:academie is null or :academie=p.academie)"),
 })
 
 @Entity
 @Table(name="\"USAGE\"")
-public class Usage {
+public class Usage implements Serializable {
     @Id
     @GeneratedValue
     int id;
@@ -131,5 +137,20 @@ public class Usage {
                 ", acteurs=" + acteurs +
                 ", commentaire='" + commentaire + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Usage usage = (Usage) o;
+
+        return id == usage.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }
