@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.test;
+package fr.univ_amu.iut.dao.test;
 
 import java.util.ArrayList;
 import java.util.List;

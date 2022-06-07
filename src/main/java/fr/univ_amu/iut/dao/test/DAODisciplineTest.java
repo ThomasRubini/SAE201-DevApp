@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.test;
+package fr.univ_amu.iut.dao.test;
 
 import fr.univ_amu.iut.dao.DAODiscipline;
 import fr.univ_amu.iut.model.Discipline;
