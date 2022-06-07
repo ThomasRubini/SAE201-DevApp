@@ -1,6 +1,7 @@
 package fr.univ_amu.iut;
 
 import fr.univ_amu.iut.fResultat.TableEntry;
+import fr.univ_amu.iut.fp.Controller;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Niveau;
 import fr.univ_amu.iut.model.Thematique;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -127,4 +129,23 @@ public class AppTest {
         assertThat(entry.getNiveau()).isEqualTo(Niveau.PremierDegre.getNom());
     }
 
+    /* Ce test s'appui sur des fonctionnalités non fixées de TestFX (= qui peuvent changer)
+    tels que la position de la souris au début du test
+    Ce test peut donc faire des faux négatifs
+     */
+    @Test
+    public void button_background_changes_on_click(FxRobot robot){
+        Pane disciplinesPane = (Pane) stage.getScene().lookup("#discipline");
+        Button button = (Button) disciplinesPane.getChildren().get(0);
+        Button button2 = (Button) disciplinesPane.getChildren().get(1);
+
+        assertThat(button.getBackground()).isEqualTo(Controller.btNormalBackground);
+        robot.clickOn(button);
+        assertThat(button.getBackground()).isEqualTo(Controller.btSelectedBackground);
+        robot.clickOn(button);
+        assertThat(button.getBackground()).isEqualTo(Controller.btHoverBackground);
+        robot.clickOn(button2);
+        assertThat(button.getBackground()).isEqualTo(Controller.btNormalBackground);
+    }
 }
+

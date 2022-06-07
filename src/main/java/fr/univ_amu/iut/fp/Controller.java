@@ -63,9 +63,9 @@ public class Controller implements Initializable {
     private Button login;
 
     // Style des boutons
-    Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY));
-    Background btNormalHover = new Background(new BackgroundFill(Color.rgb(255,152,120), new CornerRadii(30), Insets.EMPTY));
-    Background btNormalSelected = new Background(new BackgroundFill(Color.rgb(255,60,0), new CornerRadii(30), Insets.EMPTY));
+    public static Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY));
+    public static Background btHoverBackground = new Background(new BackgroundFill(Color.rgb(255,152,120), new CornerRadii(30), Insets.EMPTY));
+    public static Background btSelectedBackground = new Background(new BackgroundFill(Color.rgb(255,60,0), new CornerRadii(30), Insets.EMPTY));
 
     private void initFrance() {
         france = FranceBuilder.create()
@@ -87,7 +87,7 @@ public class Controller implements Initializable {
 
         onEnterHandler = evt -> {
             Button bt = (Button) evt.getSource();
-            bt.setBackground(btNormalHover);
+            bt.setBackground(btHoverBackground);
         };
 
         onExitHandler = evt -> {
@@ -113,8 +113,8 @@ public class Controller implements Initializable {
 
         onPressHandler = event -> {
             Button bt = (Button) event.getSource();
-            if (bt.getBackground().equals(btNormalSelected)) {
-                bt.setBackground(btNormalHover);
+            if (bt.getBackground().equals(btSelectedBackground)) {
+                bt.setBackground(btHoverBackground);
                 bt.setOnMouseEntered(onEnterHandler);
                 bt.setOnMouseExited(onExitHandler);
             } else {
@@ -135,7 +135,7 @@ public class Controller implements Initializable {
                 }
                 bt.setOnMouseEntered(null);
                 bt.setOnMouseExited(null);
-                bt.setBackground(btNormalSelected);
+                bt.setBackground(btSelectedBackground);
             }
         };
 
