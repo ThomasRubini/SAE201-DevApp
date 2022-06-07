@@ -177,7 +177,8 @@ public class Controller implements Initializable {
         placeButtonDiscipline();
         EventHandler<ActionEvent> handler = event ->{
             //TODO Recherche en fonctions des objets selectionnés
-            Donnees.setUsagesObtenus(daoUsage.findAll());
+
+            Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
             
             Stage resultats = new Stage();
             try {

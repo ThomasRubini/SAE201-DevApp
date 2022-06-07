@@ -46,7 +46,7 @@ public class Controller implements Initializable{
         
         nom.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("nom"));
         discipline.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("discipline"));
-        description.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("type"));
+        description.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("description"));
         niveau.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("niveau"));
         
     }

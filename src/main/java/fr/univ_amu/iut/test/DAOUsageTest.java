@@ -7,6 +7,7 @@ import fr.univ_amu.iut.dao.DAOUsage;
 import fr.univ_amu.iut.model.Academie;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Niveau;
+import fr.univ_amu.iut.model.Thematique;
 import fr.univ_amu.iut.model.Usage;
 
 public class DAOUsageTest implements DAOUsage{
@@ -47,6 +48,18 @@ public class DAOUsageTest implements DAOUsage{
     public boolean update(Usage obj) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public List<Usage> findByCriterias(Thematique thematique, Discipline discipline, Academie academie) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Usage> findByName(String substring) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     
