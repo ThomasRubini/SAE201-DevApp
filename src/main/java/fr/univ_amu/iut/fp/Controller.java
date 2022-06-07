@@ -230,7 +230,6 @@ public class Controller implements Initializable {
         recherche.setOnAction(handleRechercheCrieters);
 
         EventHandler<ActionEvent> loginPrompt = event ->{
-            System.out.println("test");
             Stage loginWindow = new Stage();
             try {
                 loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/loginPrompt/Code_acces.fxml"))));

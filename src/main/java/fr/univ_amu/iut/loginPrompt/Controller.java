@@ -24,6 +24,7 @@ public class Controller implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         
         EventHandler<ActionEvent> handleLogin = event ->{
+            // TODO Use SecretProvider
             System.out.println(password.getText());
         };
         log.setOnAction(handleLogin);
