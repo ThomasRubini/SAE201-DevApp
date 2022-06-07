@@ -36,8 +36,8 @@ public class AcademiePath extends SVGPath {
         final Properties PROPERTIES = new Properties();
         try (InputStream resourceStream = LOADER.getResourceAsStream(fileName)) {
             PROPERTIES.load(resourceStream);
-        } catch (IOException exception) {
-            System.out.println(Arrays.toString(exception.getStackTrace()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return PROPERTIES;
     }

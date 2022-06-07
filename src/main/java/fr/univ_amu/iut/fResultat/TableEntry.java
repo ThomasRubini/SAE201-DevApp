@@ -16,7 +16,6 @@ public class TableEntry {
         nom = usage.getNom();
         thematique = usage.getThematique().getNom();
         discipline = usage.getDiscipline().getNom();
-        System.out.println("DESC="+usage.getDescription());
         description = usage.getDescription();
         niveau = usage.getNiveau().getNom();
     }

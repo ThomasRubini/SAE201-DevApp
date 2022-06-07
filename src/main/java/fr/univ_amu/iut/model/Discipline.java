@@ -15,25 +15,24 @@ public class Discipline implements Serializable {
 
     private static final List<Discipline> INSTANCES = new ArrayList<>();
 
-
+    @Transient
     public static Discipline HistoireGeographie = new Discipline("Histoire-géographie");
-    
+    @Transient
     public static Discipline PhysiqueChimie = new Discipline("Physique-chimie");
-    
+    @Transient
     public static Discipline ScienceEtVieDeLaTerre = new Discipline("SVT");
-    
+    @Transient
     public static Discipline Technologie = new Discipline("Technologie");
-    
+    @Transient
     public static Discipline Francais = new Discipline("Français");
-    
+    @Transient
     public static Discipline EconomieGestion = new Discipline("Économie Gestion");
-    
+    @Transient
     public static Discipline LangueVivante = new Discipline("Langue Vivante");
-
+    @Transient
     public static Discipline Mathematiques = new Discipline("Mathématiques");
-
+    @Transient
     public static Discipline Philosophie = new Discipline("Philosophie");
-
     @Id
     @GeneratedValue
     int id;

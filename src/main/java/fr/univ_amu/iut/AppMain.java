@@ -22,19 +22,19 @@ public class AppMain extends Application {
         testMode = res!=null&&res.equals("true");
 
 
-        ScreenController.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
+        ScreenController.addScreen("Accueil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
         
         //TODO Ajouter les pages d'admin pour l'ajout des usages
         //ScreenController.addScreen("admin1",pane);
         //ScreenController.addScreen("admin2",pane);
         
-        ScreenController.activate("Acceuil");
+        ScreenController.activate("Accueil");
         stage.setTitle("Carte des académie");
         stage.setScene(scene);
         stage.show();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         launch(args);
     }
 }

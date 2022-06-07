@@ -24,8 +24,6 @@ public class DAOFactoryJPA implements DAOFactory {
     private <T> void insertAllHelper(DAO<T> dao, Collection<T> list){
         if(dao.findAll().size()==0){
             entityManager.getTransaction().begin();
-            System.out.println("LOOP");
-            System.out.flush();
             for(var a : list){
                 entityManager.persist(a);
             }

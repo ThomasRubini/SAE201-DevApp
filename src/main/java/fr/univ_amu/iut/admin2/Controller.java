@@ -101,8 +101,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addActeurs.setOnAction(actionEvent -> addActeur());
         addRessources.setOnAction(actionEvent -> addRessource());
-        id1.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès 1"));
-        id2.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès 2"));
-        id3.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès +"));
+        id1.setOnAction(actionEvent -> textMenuButton.setPromptText("Degré 1"));
+        id2.setOnAction(actionEvent -> textMenuButton.setPromptText("Degré 2"));
+        id3.setOnAction(actionEvent -> textMenuButton.setPromptText("Degré +"));
     }
 }
