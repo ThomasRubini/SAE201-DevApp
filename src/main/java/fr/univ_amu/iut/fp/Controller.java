@@ -2,6 +2,7 @@ package fr.univ_amu.iut.fp;
 
 import fr.univ_amu.iut.AppMain;
 import fr.univ_amu.iut.Donnees;
+import fr.univ_amu.iut.dao.DAO;
 import fr.univ_amu.iut.dao.DAODiscipline;
 import fr.univ_amu.iut.dao.DAOThematique;
 import fr.univ_amu.iut.dao.DAOUsage;
@@ -80,7 +81,7 @@ public class Controller implements Initializable {
     }
 
     private Button initButton(Object obj,int x,int y){
-        String nom = "";
+        String nom;
 
         EventHandler<ActionEvent> actionHandler;
         EventHandler<MouseEvent> onPressHandler;
@@ -99,15 +100,11 @@ public class Controller implements Initializable {
         if (obj instanceof Discipline) {
             Discipline disciplineActuelle = (Discipline) obj;
             nom = disciplineActuelle.getNom();
-            actionHandler = event -> {
-                Donnees.setDisciplineSelectionee(disciplineActuelle);
-            };
+            actionHandler = event -> Donnees.setDisciplineSelectionee(disciplineActuelle);
         } else {
             Thematique thematiqueActuelle = (Thematique) obj;
             nom = thematiqueActuelle.getNom();
-            actionHandler = event -> {
-                Donnees.setThematiqueSelectionee(thematiqueActuelle);
-            };
+            actionHandler = event -> Donnees.setThematiqueSelectionee(thematiqueActuelle);
         }
 
 
@@ -157,31 +154,15 @@ public class Controller implements Initializable {
         return bt;
     }
 
-    private Void placeButtonDiscipline() {
-        List<Discipline> disciplines = daoDiscipline.findAll();
-        discipline.setMinHeight(disciplines.size() * 65);
-        for (int i = 0; i < disciplines.size(); ++i) {
+    private void placeButtons(List<?> list, AnchorPane anchorPane) {
+        anchorPane.setMinHeight(list.size() * 65);
+        for (int i = 0; i < list.size(); ++i) {
             if (i % 2 == 0) {
-                discipline.getChildren().add(initButton(disciplines.get(i), 38, i / 2 * 130));
+                anchorPane.getChildren().add(initButton(list.get(i), 38, i / 2 * 130));
             } else {
-                discipline.getChildren().add(initButton(disciplines.get(i), 332, i / 2 * 130));
+                anchorPane.getChildren().add(initButton(list.get(i), 332, i / 2 * 130));
             }
         }
-
-        return null;
-    }
-
-    private Void placeButtonThematique() {
-        List<Thematique> thematiques = daoThematique.findAll();
-        thematique.setMinHeight(thematiques.size() * 65);
-        for (int i = 0; i < thematiques.size(); ++i) {
-            if (i % 2 == 0) {
-                thematique.getChildren().add(initButton(thematiques.get(i), 38, i / 2 * 130));
-            } else {
-                thematique.getChildren().add(initButton(thematiques.get(i), 332, i / 2 * 130));
-            }
-        }
-        return null;
     }
 
     @Override
@@ -195,13 +176,9 @@ public class Controller implements Initializable {
         daoThematique = daoFactory.createDAOThematique();
         daoUsage = daoFactory.createDAOUsage();
 
-        // a chaque fois
+        placeButtons(daoThematique.findAll(), thematique);
+        placeButtons(daoDiscipline.findAll(), discipline);
 
-        List<Discipline> d = daoDiscipline.findAll();
-        List<Thematique> t = daoThematique.findAll();
-
-        placeButtonThematique();
-        placeButtonDiscipline();
         EventHandler<ActionEvent> handleRechercheTextuelle = event ->{
 
             Donnees.setUsagesObtenus(daoUsage.findByNamePart(barreDeRecherche.getText()));
