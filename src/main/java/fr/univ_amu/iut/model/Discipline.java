@@ -30,6 +30,10 @@ public class Discipline implements Serializable {
     
     public static Discipline LangueVivante = new Discipline("Langue Vivante");
 
+    public static Discipline Mathematiques = new Discipline("Mathématiques");
+
+    public static Discipline Philosophie = new Discipline("Philosophie");
+
     @Id
     @GeneratedValue
     int id;

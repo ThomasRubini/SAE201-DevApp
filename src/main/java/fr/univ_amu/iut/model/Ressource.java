@@ -23,6 +23,7 @@ public class Ressource implements Serializable {
     String typeRessource;
 
     private static URL convertUrl(String url){
+        if(url==null)return null;
         try{
             return new URL(url);
         }catch(MalformedURLException e){
