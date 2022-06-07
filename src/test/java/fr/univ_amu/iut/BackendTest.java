@@ -1,5 +1,8 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.dao.factory.DAOFactory;
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
 import fr.univ_amu.iut.dao.jpa.DAOFactoryJPA;
 import fr.univ_amu.iut.model.*;
 import org.junit.jupiter.api.Assertions;
@@ -10,11 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BackendTest {
 
-	private static DAOFactoryJPA daoFactory;
+	private static DAOFactory daoFactory;
 
 	@BeforeAll
 	public static void setUp() throws Exception {
-		daoFactory = new DAOFactoryJPA("gestionUsagesPUTest");
+		daoFactory = DAOFactoryProducer.getFactory(DAOType.JPA_MEMORY);
 
 		Usage usage = new Usage();
 		usage.setNom("Premier usage");

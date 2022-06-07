@@ -1,5 +1,6 @@
 package fr.univ_amu.iut.fp;
 
+import fr.univ_amu.iut.AppMain;
 import fr.univ_amu.iut.Donnees;
 import fr.univ_amu.iut.dao.DAODiscipline;
 import fr.univ_amu.iut.dao.DAORessource;
@@ -163,7 +164,8 @@ public class Controller implements Initializable {
         stackPaneFrance.getChildren().add(france);
 
         // init
-        daoFactory = DAOFactoryProducer.getFactory(DAOType.TEST);
+
+        daoFactory = DAOFactoryProducer.getFactory(AppMain.testMode ? DAOType.TEST : DAOType.JPA);
         daoDiscipline = daoFactory.createDAODiscipline();
         daoThematique = daoFactory.createDAOThematique();
         daoUsage = daoFactory.createDAOUsage();
