@@ -164,7 +164,6 @@ public class Controller implements Initializable {
         stackPaneFrance.getChildren().add(france);
 
         // init
-
         daoFactory = DAOFactoryProducer.getFactory(AppMain.testMode ? DAOType.TEST : DAOType.JPA);
         daoDiscipline = daoFactory.createDAODiscipline();
         daoThematique = daoFactory.createDAOThematique();
