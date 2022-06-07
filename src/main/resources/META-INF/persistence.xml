@@ -7,10 +7,27 @@
 
         <properties>
             <!-- database connection properties -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/devapp"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://lagrottedeneotaku.hopto.org:6776/devapp"/>
             <property name="jakarta.persistence.jdbc.user" value="devapp"/>
             <property name="jakarta.persistence.jdbc.password" value="7kPoWBgoV5ahygxyXYGzaL"/>
             <!-- Nous ne devrions pas commit le mot de passe dans le dépot, mais... je ne pense pas que le projet ne respecte la moindre règle de sécurité de toute facon (pas d'architecture trois tiers)-->
+
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+
+            <!-- configure logging -->
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="gestionUsagesPUTest" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <properties>
+            <!-- database connection properties -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:devapp;create=true"/>
 
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>

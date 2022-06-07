@@ -1,5 +1,8 @@
 package fr.univ_amu.iut;
 
+import fr.univ_amu.iut.dao.factory.DAOFactoryProducer;
+import fr.univ_amu.iut.dao.factory.DAOType;
+import fr.univ_amu.iut.model.RegionAcademique;
 import fr.univ_amu.iut.view.map.AcademiePath;
 import fr.univ_amu.iut.view.map.France;
 import fr.univ_amu.iut.view.map.FranceBuilder;
@@ -43,6 +46,7 @@ public class FranceMain extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        DAOFactoryProducer.getFactory(DAOType.JPA).createDAOUsage();
+//        launch(args);
     }
 }
