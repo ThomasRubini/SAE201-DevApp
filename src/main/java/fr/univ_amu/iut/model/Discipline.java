@@ -40,16 +40,15 @@ public class Discipline implements Serializable {
     String nom;
 
     public Discipline() {
-        INSTANCES.add(this);
     }
 
     public Discipline(String nom) {
-        this();
         this.nom = nom;
+        INSTANCES.add(this);
     }
 
     public static List<Discipline> toutes() {
-        return new ArrayList<>(INSTANCES);
+        return INSTANCES;
     }
 
     public static Discipline getById(int id){

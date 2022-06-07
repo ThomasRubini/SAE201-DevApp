@@ -18,13 +18,7 @@ public class DAOThematiqueTest implements DAOThematique {
     public List<Thematique> findAll() {
         List<Thematique> liste = new ArrayList<>();
         for (int i = 0; i < 12; i++){
-            URL url = null;
-            try {
-                url = new URL("http://google.com");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            Thematique thematique = new Thematique(String.valueOf(i));
+            Thematique thematique = new Thematique("Thematique n° "+i);
             liste.add(thematique);
         }
         return liste;
