@@ -1,6 +1,7 @@
 
 package fr.univ_amu.iut.ui.loginPrompt;
 
+import fr.univ_amu.iut.secret.SecretProvider;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,11 +25,12 @@ public class Controller implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         
         EventHandler<ActionEvent> handleLogin = event ->{
-            // TODO Use SecretProvider
-            System.out.println(password.getText());
+            if(SecretProvider.getInstance().isSecretValid(password.getText())){
+                System.out.println("Mot de passe OK !");
+            }else{
+                System.out.println("Mot de passe invalide");
+            }
         };
         log.setOnAction(handleLogin);
-        
     }
-
 }
