@@ -12,7 +12,10 @@ import fr.univ_amu.iut.model.*;
 public class DataMain {
 	
 	
-	// A executer une seule fois, pour populate la base de données
+	/*
+	Code utilitaire que nous avons utilisé pendant le développement de l'application, afin de remplir la base de donnée
+	**SUPPRIMER LES TABLES DE LA BASE DE DONNEES AVANT D'EXECUTER**
+	 */
 	public static void main(String[] args) {
 
 		DAOFactory daoFactory = DAOFactoryProducer.getFactory(DAOType.JPA);

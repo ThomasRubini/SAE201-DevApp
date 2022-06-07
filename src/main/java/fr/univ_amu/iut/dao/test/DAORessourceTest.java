@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.test;
+package fr.univ_amu.iut.dao.test;
 
 import fr.univ_amu.iut.dao.DAORessource;
 import fr.univ_amu.iut.model.Ressource;

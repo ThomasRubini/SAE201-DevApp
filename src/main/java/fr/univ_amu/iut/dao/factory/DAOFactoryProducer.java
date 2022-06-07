@@ -1,7 +1,7 @@
 package fr.univ_amu.iut.dao.factory;
 
 import fr.univ_amu.iut.dao.jpa.DAOFactoryJPA;
-import fr.univ_amu.iut.test.DAOFactoryTest;
+import fr.univ_amu.iut.dao.test.DAOFactoryTest;
 
 public class DAOFactoryProducer {
     public static DAOFactory getFactory(DAOType type) {
