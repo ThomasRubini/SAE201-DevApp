@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface DAOUsage extends DAO<Usage>{
 	List<Usage> findByCriterias(Thematique thematique, Discipline discipline, Academie academie);
-	List<Usage> findByName(String substring);
+	List<Usage> findByNamePart(String substring);
 }

@@ -40,9 +40,9 @@ public class DAOUsageJPA extends DAOBaseClassJPA<Usage> implements DAOUsage {
 
 
 	@Override
-	public List<Usage> findByName(String substring) {
-		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findByName", Usage.class);
-		query.setParameter("substring", "%"+substring+"%");
+	public List<Usage> findByNamePart(String substring) {
+		TypedQuery<Usage> query = entityManager.createNamedQuery("Usage.findByNamePart", Usage.class);
+		query.setParameter("substring", "%"+substring.toLowerCase()+"%");
 		return query.getResultList();
 	}
 }

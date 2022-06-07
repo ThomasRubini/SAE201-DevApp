@@ -26,8 +26,7 @@ public class Ressource implements Serializable {
         try{
             return new URL(url);
         }catch(MalformedURLException e){
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 
