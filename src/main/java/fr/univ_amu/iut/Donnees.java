@@ -9,9 +9,18 @@ import fr.univ_amu.iut.model.Usage;
 
 public class Donnees {
     private static Academie academieSelectionee = null;
+
     private static Thematique thematiqueSelectionee = null;
     private static Discipline disciplineSelectionee = null;
+    private static Usage usageSelectione = null;
     private static List<Usage> usagesObtenus;
+
+    public static Usage getUsageSelectione() {
+        return usageSelectione;
+    }
+    public static void setUsageSelectione(Usage usageSelectione) {
+        Donnees.usageSelectione = usageSelectione;
+    }
 
     public static List<Usage> getUsagesObtenus() {
         return usagesObtenus;

@@ -6,6 +6,7 @@ import fr.univ_amu.iut.model.Usage;
 
 public class TableEntry {
 
+    private Usage usage;
     private String nom;
     private String discipline;
     private String thematique;
@@ -13,12 +14,17 @@ public class TableEntry {
     private String niveau;
 
     public TableEntry(Usage usage) {
+        this.usage = usage;
         nom = usage.getNom();
         thematique = usage.getThematique().getNom();
         discipline = usage.getDiscipline().getNom();
         System.out.println("DESC="+usage.getDescription());
         description = usage.getDescription();
         niveau = usage.getNiveau().getNom();
+    }
+
+    public Usage getUsage(){
+        return usage;
     }
 
     public String getNom() {
