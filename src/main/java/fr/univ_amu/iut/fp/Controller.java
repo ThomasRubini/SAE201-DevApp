@@ -58,6 +58,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Button rechercheTextuelle;
+    
+    @FXML
+    private Button login;
 
     // Style des boutons
     Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY));
@@ -215,7 +218,6 @@ public class Controller implements Initializable {
 
 
         EventHandler<ActionEvent> handleRechercheCrieters = event ->{
-            System.out.println("test");
             Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
             Stage resultats = new Stage();
             try {
@@ -226,5 +228,20 @@ public class Controller implements Initializable {
             }
         };
         recherche.setOnAction(handleRechercheCrieters);
+
+        EventHandler<ActionEvent> loginPrompt = event ->{
+            System.out.println("test");
+            Stage loginWindow = new Stage();
+            try {
+                loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/loginPrompt/Code_acces.fxml"))));
+                loginWindow.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+
+        login.setOnAction(loginPrompt);
+
+
     }
 }

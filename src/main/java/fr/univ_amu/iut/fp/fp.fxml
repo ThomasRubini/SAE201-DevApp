@@ -15,7 +15,7 @@
                </cursor>
             </TextField>
             <Button fx:id="rechercheTextuelle" layoutX="1066.0" layoutY="27.0" mnemonicParsing="false" text="RECHERCHER VIA LE NOM" AnchorPane.rightAnchor="110.0" />
-            <Button layoutX="41.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="interface admin" />
+            <Button fx:id="login" layoutX="41.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-radius: 30;" text="interface admin" />
          </children>
       </AnchorPane>
       <StackPane layoutX="744.0" layoutY="100.0" prefHeight="254.0" prefWidth="622.0" style="-fx-background-color: none;" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="100.0">
