@@ -7,6 +7,9 @@ open module francefx {
     requires transitive org.kordamp.ikonli.materialdesign;
     requires transitive org.kordamp.ikonli.core;
 
+    requires de.mkammerer.argon2.nolibs;
+    requires com.sun.jna;
+
     requires jakarta.persistence;
 
     exports fr.univ_amu.iut.view.map;

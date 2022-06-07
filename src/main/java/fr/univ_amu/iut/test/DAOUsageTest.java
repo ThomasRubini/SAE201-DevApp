@@ -14,8 +14,7 @@ public class DAOUsageTest implements DAOUsage{
 
     @Override
     public boolean delete(Usage obj) {
-        // TODO Auto-generated method stub
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
