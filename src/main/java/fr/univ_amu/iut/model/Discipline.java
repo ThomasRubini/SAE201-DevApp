@@ -1,17 +1,19 @@
 package fr.univ_amu.iut.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "Discipline.findAll", query = "SELECT p FROM Discipline p"),
+        @NamedQuery(name = "Discipline.findById", query = "SELECT p FROM Discipline p WHERE p.id = :id"),
+})
 @Entity
-public class Discipline {
+public class Discipline implements Serializable {
 
-    private static List<Discipline> INSTANCES = new ArrayList<>();
+    private static final List<Discipline> INSTANCES = new ArrayList<>();
 
     @Transient
     public static Discipline Toutes = new Discipline("Toutes disciplines");
@@ -33,15 +35,16 @@ public class Discipline {
     @Id
     @GeneratedValue
     int id;
+
+    @Column(unique = true)
     String nom;
 
     public Discipline() {
-        INSTANCES.add(this);
     }
 
     public Discipline(String nom) {
-        this();
         this.nom = nom;
+        INSTANCES.add(this);
     }
 
     public static List<Discipline> toutes() {
@@ -70,5 +73,23 @@ public class Discipline {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Discipline that = (Discipline) o;
+
+        if (id != that.id) return false;
+        return nom.equals(that.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + nom.hashCode();
+        return result;
     }
 }

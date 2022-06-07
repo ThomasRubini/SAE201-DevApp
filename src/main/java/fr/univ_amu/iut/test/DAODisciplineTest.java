@@ -12,7 +12,7 @@ public class DAODisciplineTest implements DAODiscipline {
 
     @Override
     public List<Discipline> findAll() {
-        return null;
+        return Discipline.toutes();
     }
 
     @Override

@@ -18,13 +18,7 @@ public class DAORessourceTest implements DAORessource {
     public List<Ressource> findAll() {
         List<Ressource> liste = new ArrayList<>();
         for (int i = 0; i < 12; i++){
-            URL url = null;
-            try {
-                url = new URL("http://google.com");
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-            Ressource ressource = new Ressource(url, "google", "site web");
+            Ressource ressource = new Ressource("google", "http://google.com", "site web");
             liste.add(ressource);
         }
         return liste;

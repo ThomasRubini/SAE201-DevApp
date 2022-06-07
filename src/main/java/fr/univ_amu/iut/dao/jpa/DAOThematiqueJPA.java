@@ -22,7 +22,7 @@ public class DAOThematiqueJPA extends DAOBaseClassJPA<Thematique> implements DAO
 	@Override
 	public Thematique getById(int id) {
 		TypedQuery<Thematique> query = entityManager.createNamedQuery("Thematique.findById", Thematique.class);
-		query.setParameter("numEt", id);
+		query.setParameter("id", id);
 		return query.getSingleResult();
 	}
 }

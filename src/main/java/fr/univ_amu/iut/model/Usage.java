@@ -2,15 +2,23 @@ package fr.univ_amu.iut.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usages p"),
-        @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usages p WHERE p.id = :id"),
+        @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
+        @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
+        @NamedQuery(name = "Usage.findByName", query = "SELECT p FROM Usage p WHERE p.nom LIKE :substring"),
+        @NamedQuery(name = "Usage.findByCriterias", query = "SELECT p FROM Usage p WHERE" +
+                "(:thematique is null or :thematique=p.thematique)" +
+                "AND (:discipline is null or :discipline=p.discipline)"+
+                "AND (:academie is null or :academie=p.academie)"),
 })
+
 @Entity
-public class Usages {
+@Table(name="\"USAGE\"")
+public class Usage implements Serializable {
     @Id
     @GeneratedValue
     int id;
@@ -34,12 +42,12 @@ public class Usages {
     @OneToMany(cascade = CascadeType.ALL)
     List<Ressource> ressources = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    Acteur acteur;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Acteur> acteurs = new ArrayList<>();
 
     String commentaire;
 
-    public Usages() {
+    public Usage() {
     }
 
     public String getNom() {
@@ -98,12 +106,12 @@ public class Usages {
         this.ressources.add(ressource);
     }
 
-    public Acteur getActeur() {
-        return acteur;
+    public List<Acteur> getActeurs() {
+        return acteurs;
     }
 
-    public void setActeur(Acteur acteur) {
-        this.acteur = acteur;
+    public void addActeur(Acteur acteur) {
+        this.acteurs.add(acteur);
     }
 
     public String getCommentaire() {
@@ -126,8 +134,23 @@ public class Usages {
                 ", niveau=" + niveau +
                 ", academie=" + academie +
                 ", ressources=" + ressources +
-                ", acteur=" + acteur +
+                ", acteurs=" + acteurs +
                 ", commentaire='" + commentaire + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Usage usage = (Usage) o;
+
+        return id == usage.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }
