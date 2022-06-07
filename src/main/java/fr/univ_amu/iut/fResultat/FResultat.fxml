@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1e3d59#1e3d59;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fResultat.Controller">
-   <children>
-      <TableView fx:id="table" layoutX="10.0" layoutY="10.0" prefHeight="380.0" prefWidth="580.0" style="-fx-background-radius: 20; -fx-border-color: #1e3d59#1e3d59; -fx-background-color: #f5f0e1#f5f0e1;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-        <columns>
-          <TableColumn fx:id="nom" prefWidth="121.0" text="Nom" />
-            <TableColumn fx:id="discipline" prefWidth="128.0" text="Disciplines" />
-            <TableColumn fx:id="niveau" minWidth="8.0" prefWidth="130.0" text="Niveaux" />
-            <TableColumn fx:id="description" prefWidth="124.0" text="Description" />
-        </columns>
-      </TableView>
-   </children>
-</AnchorPane>
+<TabPane fx:id="onglets" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fResultat.Controller">
+   <tabs>
+      <Tab text="Resultats">
+         <content>
+            <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1e3d59#1e3d59;">
+               <children>
+                  <TableView fx:id="table" layoutX="10.0" layoutY="10.0" prefHeight="380.0" prefWidth="680.0" style="-fx-background-radius: 20; -fx-border-color: #1e3d59#1e3d59; -fx-background-color: #f5f0e1#f5f0e1;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <columns>
+                      <TableColumn fx:id="nom" prefWidth="121.0" text="Nom" />
+                        <TableColumn fx:id="discipline" prefWidth="128.0" text="Disciplines" />
+                        <TableColumn fx:id="niveau" minWidth="8.0" prefWidth="130.0" text="Niveaux" />
+                        <TableColumn fx:id="description" prefWidth="124.0" text="Description" />
+                        <TableColumn fx:id="description1" prefWidth="124.0" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+</TabPane>

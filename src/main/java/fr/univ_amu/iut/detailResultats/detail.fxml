@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.detailResultats.Controller">
+   <children>
+      <Text fill="#ff6e40" layoutX="93.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Academie " wrappingWidth="175.0749652342431" AnchorPane.leftAnchor="93.0" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Label fx:id="academieLabel" layoutX="93.0" layoutY="94.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.leftAnchor="93.0" />
+      <Text fill="#ff6e40" layoutX="93.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acteur(s)" wrappingWidth="137.4109649658203" AnchorPane.leftAnchor="93.0">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6e40" layoutX="93.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discipline " wrappingWidth="147.13865661621094" AnchorPane.leftAnchor="93.0">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6e40" layoutX="687.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Region Academique" wrappingWidth="343.3069763183594" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6e40" layoutX="688.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ressource" wrappingWidth="194.35128784179688" AnchorPane.rightAnchor="317.6487121582031">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fill="#ff6e40" layoutX="688.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thematique" wrappingWidth="198.83489990234375" AnchorPane.rightAnchor="317.79742431640625">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Label fx:id="acteurLabel" layoutX="93.0" layoutY="260.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.leftAnchor="93.0" />
+      <Label fx:id="disciplineLabel" layoutX="93.0" layoutY="426.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.leftAnchor="93.0" />
+      <Label fx:id="regionAcademieLabel" layoutX="688.0" layoutY="93.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.rightAnchor="217.0" />
+      <Label fx:id="ressourceLabel" layoutX="687.0" layoutY="257.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.rightAnchor="217.0" />
+      <Label fx:id="thematiqueLabel" layoutX="688.0" layoutY="426.0" prefHeight="82.0" prefWidth="295.0" style="-fx-background-color: blue;" text="Label" AnchorPane.rightAnchor="217.0" />
+   </children>
+</AnchorPane>

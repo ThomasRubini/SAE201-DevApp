@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -193,6 +194,7 @@ public class Controller implements Initializable {
         };
         rechercheTextuelle.setOnAction(handleRechercheTextuelle);
 
+        TabPane tab;
 
         EventHandler<ActionEvent> handleRechercheCriterias = event ->{
             Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
