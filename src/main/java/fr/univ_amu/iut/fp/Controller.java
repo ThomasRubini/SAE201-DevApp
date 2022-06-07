@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -46,6 +47,9 @@ public class Controller implements Initializable {
     private Pane stackPaneFrance;
 
     @FXML
+    private TextField barreDeRecherche;
+
+    @FXML
     private AnchorPane discipline;
 
     @FXML
@@ -53,6 +57,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Button recherche;
+
+    @FXML
+    private Button rechercheTextuelle;
 
     // Style des boutons
     Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255,110,64), new CornerRadii(30), Insets.EMPTY));
@@ -176,11 +183,10 @@ public class Controller implements Initializable {
 
         placeButtonThematique();
         placeButtonDiscipline();
-        EventHandler<ActionEvent> handler = event ->{
-            //TODO Recherche en fonctions des objets selectionnés
-
-            Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
+        EventHandler<ActionEvent> handleRechercheTextuelle = event ->{
             
+            Donnees.setUsagesObtenus(daoUsage.findByNamePart(barreDeRecherche.getText()));
+
             Stage resultats = new Stage();
             try {
                 resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
@@ -188,8 +194,21 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
         };
-        recherche.setOnAction(handler);
+        rechercheTextuelle.setOnAction(handleRechercheTextuelle);
+
+
+        EventHandler<ActionEvent> handleRechercheCrieters = event ->{
+            System.out.println("test");
+            Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
+            Stage resultats = new Stage();
+            try {
+                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
+                resultats.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        };
+        recherche.setOnAction(handleRechercheCrieters);
     }
 }
