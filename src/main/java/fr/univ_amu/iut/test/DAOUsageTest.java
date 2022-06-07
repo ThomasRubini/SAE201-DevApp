@@ -21,10 +21,11 @@ public class DAOUsageTest implements DAOUsage{
     @Override
     public List<Usage> findAll() {
         List<Usage> usages = new ArrayList<>();
-        for( int i = 0; i < 69 ; i++){
+        for( int i = 0; i < 42 ; i++){
             Usage tmp = new Usage();
             tmp.setNom(String.valueOf(i));
             tmp.setDiscipline(Discipline.Technologie);
+            tmp.setThematique(Thematique.CreationNumerique);
             tmp.setNiveau(Niveau.Tous);
             tmp.setDescription("je suis un commentaire tres long mais surtout tres utile, je sert a tester l'interface graphique et la mettre au bout de ses limtes");
             usages.add(tmp);
@@ -52,8 +53,15 @@ public class DAOUsageTest implements DAOUsage{
 
     @Override
     public List<Usage> findByCriterias(Thematique thematique, Discipline discipline, Academie academie) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Usage> list = new ArrayList<>();
+        for(Usage usage : findAll()){
+            if((thematique==null||thematique==usage.getThematique())&&
+                    (discipline==null||discipline==usage.getDiscipline())&&
+                    (academie==null||academie==usage.getAcademie())){
+                list.add(usage);
+            }
+        }
+        return list;
     }
 
     @Override

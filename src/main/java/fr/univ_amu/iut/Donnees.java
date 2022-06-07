@@ -10,7 +10,7 @@ import fr.univ_amu.iut.model.Usage;
 public class Donnees {
     private static Academie academieSelectionee = null;
     private static Thematique thematiqueSelectionee = null;
-    private static Discipline disciplineSelectionee = Discipline.Toutes;
+    private static Discipline disciplineSelectionee = null;
     private static List<Usage> usagesObtenus;
 
     public static List<Usage> getUsagesObtenus() {
@@ -36,7 +36,7 @@ public class Donnees {
         if(thematiqueSelectionee == Donnees.thematiqueSelectionee){
             thematiqueSelectionee = null;
         }
-        System.out.println("Thematique selectionée : %s".formatted((thematiqueSelectionee == null)? "Aucune Thematique" : thematiqueSelectionee.getNom()));
+        System.out.println("Thematique selectionée : %s".formatted(thematiqueSelectionee));
         Donnees.thematiqueSelectionee = thematiqueSelectionee;
     }
     public static Discipline getDisciplineSelectionee() {
@@ -44,9 +44,9 @@ public class Donnees {
     }
     public static void setDisciplineSelectionee(Discipline disciplineSelectionee) {
         if(disciplineSelectionee == Donnees.disciplineSelectionee){
-            disciplineSelectionee = Discipline.Toutes;
+            disciplineSelectionee = null;
         }
-        System.out.println("Discipline Selectionee : %s".formatted(disciplineSelectionee.getNom()));
+        System.out.println("Discipline Selectionee : %s".formatted(disciplineSelectionee));
         Donnees.disciplineSelectionee = disciplineSelectionee;
     }
 

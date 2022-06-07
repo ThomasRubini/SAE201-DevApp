@@ -15,9 +15,7 @@ public class Discipline implements Serializable {
 
     private static final List<Discipline> INSTANCES = new ArrayList<>();
 
-    
-    public static Discipline Toutes = new Discipline("Toutes disciplines");
-    
+
     public static Discipline HistoireGeographie = new Discipline("Histoire-géographie");
     
     public static Discipline PhysiqueChimie = new Discipline("Physique-chimie");
