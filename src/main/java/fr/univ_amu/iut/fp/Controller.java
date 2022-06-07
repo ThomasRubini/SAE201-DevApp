@@ -43,6 +43,8 @@ public class Controller implements Initializable {
     DAOThematique daoThematique;
     DAOUsage daoUsage;
 
+    Stage lastResultSceneOpened;
+
     @FXML
     private Pane stackPaneFrance;
 
@@ -205,6 +207,7 @@ public class Controller implements Initializable {
             try {
                 resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
                 resultats.show();
+                lastResultSceneOpened = resultats;
             } catch (IOException e) {
                 e.printStackTrace();
             }

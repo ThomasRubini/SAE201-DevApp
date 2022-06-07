@@ -23,13 +23,22 @@ public class DAOUsageTest implements DAOUsage{
         List<Usage> usages = new ArrayList<>();
         for( int i = 0; i < 42 ; i++){
             Usage tmp = new Usage();
-            tmp.setNom(String.valueOf(i));
+            tmp.setNom("Usage n°"+ i);
             tmp.setDiscipline(Discipline.Technologie);
             tmp.setThematique(Thematique.CreationNumerique);
             tmp.setNiveau(Niveau.Tous);
-            tmp.setDescription("je suis un commentaire tres long mais surtout tres utile, je sert a tester l'interface graphique et la mettre au bout de ses limtes");
+            tmp.setDescription("je suis un commentaire tres long mais surtout tres utile, je sert a tester l'interface graphique et la mettre au bout de ses limites");
             usages.add(tmp);
         }
+
+        Usage tmp = new Usage();
+        tmp.setNom("Usage spécial 1");
+        tmp.setDiscipline(Discipline.PhysiqueChimie);
+        tmp.setThematique(Thematique.ClasseInversee);
+        tmp.setNiveau(Niveau.PremierDegre);
+        tmp.setDescription("Un usage très simple, pour un test de recherche");
+        usages.add(tmp);
+
         return usages;
     }
 
