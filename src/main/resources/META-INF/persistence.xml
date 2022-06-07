@@ -7,7 +7,7 @@
 
         <properties>
             <!-- database connection properties -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost/devapp"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://lagrottedeneotaku.hopto.org:6776/devapp"/>
             <property name="jakarta.persistence.jdbc.user" value="devapp"/>
             <property name="jakarta.persistence.jdbc.password" value="7kPoWBgoV5ahygxyXYGzaL"/>
             <!-- Nous ne devrions pas commit le mot de passe dans le dépot, mais... je ne pense pas que le projet ne respecte la moindre règle de sécurité de toute facon (pas d'architecture trois tiers)-->
