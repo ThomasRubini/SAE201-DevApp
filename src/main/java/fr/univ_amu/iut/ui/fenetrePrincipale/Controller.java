@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.fp;
+package fr.univ_amu.iut.ui.fenetrePrincipale;
 
 import fr.univ_amu.iut.AppMain;
 import fr.univ_amu.iut.Donnees;
@@ -186,7 +186,7 @@ public class Controller implements Initializable {
 
             Stage resultats = new Stage();
             try {
-                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
+                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/fenetreResultats/FResultat.fxml"))));
                 resultats.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -200,7 +200,7 @@ public class Controller implements Initializable {
             Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
             Stage resultats = new Stage();
             try {
-                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fResultat/FResultat.fxml"))));
+                resultats.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/fenetreResultats/FResultat.fxml"))));
                 resultats.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -211,7 +211,7 @@ public class Controller implements Initializable {
         EventHandler<ActionEvent> loginPrompt = event ->{
             Stage loginWindow = new Stage();
             try {
-                loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/loginPrompt/Code_accessa.fxml"))));
+                loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/loginPrompt/Code_access.fxml"))));
                 loginWindow.show();
             } catch (IOException e) {
                 e.printStackTrace();

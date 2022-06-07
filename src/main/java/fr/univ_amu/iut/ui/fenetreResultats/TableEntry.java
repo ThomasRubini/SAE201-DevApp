@@ -1,6 +1,4 @@
-package fr.univ_amu.iut.fResultat;
-
-import java.util.List;
+package fr.univ_amu.iut.ui.fenetreResultats;
 
 import fr.univ_amu.iut.model.Usage;
 

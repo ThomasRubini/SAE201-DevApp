@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.admin2;
+package fr.univ_amu.iut.ui.admin2;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

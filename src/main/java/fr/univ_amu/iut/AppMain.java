@@ -22,7 +22,7 @@ public class AppMain extends Application {
         testMode = res!=null&&res.equals("true");
 
 
-        ScreenController.addScreen("Accueil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
+        ScreenController.addScreen("Accueil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/fenetrePrincipale/fp.fxml")));
         
         //TODO Ajouter les pages d'admin pour l'ajout des usages
         //ScreenController.addScreen("admin1",pane);
