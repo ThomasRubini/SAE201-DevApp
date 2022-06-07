@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.admin2;
+package fr.univ_amu.iut.ui.admin2;
 
 
 import javafx.application.Application;
@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            AnchorPane root = FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/admin2/admin2.fxml"));
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/admin2/admin2.fxml"));
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {

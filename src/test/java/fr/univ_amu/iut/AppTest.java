@@ -1,7 +1,7 @@
 package fr.univ_amu.iut;
 
-import fr.univ_amu.iut.fResultat.TableEntry;
-import fr.univ_amu.iut.fp.Controller;
+import fr.univ_amu.iut.ui.fenetrePrincipale.Controller;
+import fr.univ_amu.iut.ui.fenetreResultats.TableEntry;
 import fr.univ_amu.iut.model.Discipline;
 import fr.univ_amu.iut.model.Niveau;
 import fr.univ_amu.iut.model.Thematique;
@@ -9,10 +9,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,8 +18,6 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.ApplicationTest;
 import org.testfx.framework.junit5.Start;
-
-import java.util.Iterator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

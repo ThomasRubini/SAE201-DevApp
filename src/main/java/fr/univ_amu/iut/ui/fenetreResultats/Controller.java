@@ -1,9 +1,8 @@
-package fr.univ_amu.iut.fResultat;
+package fr.univ_amu.iut.ui.fenetreResultats;
 
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -68,7 +67,7 @@ public class Controller implements Initializable{
             Donnees.setUsageSelectione(table.getSelectionModel().getSelectedItem().getUsage());
             Tab onglet;
             try {
-                onglet = new Tab(Donnees.getUsageSelectione().getNom(),FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/detailResultats/detail.fxml")));
+                onglet = new Tab(Donnees.getUsageSelectione().getNom(),FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/ui/detailResultats/detail.fxml")));
                 onglets.getTabs().add(onglet);
             } catch (IOException e) {
                 e.printStackTrace();

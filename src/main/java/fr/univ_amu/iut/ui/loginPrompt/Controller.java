@@ -1,5 +1,5 @@
 
-package fr.univ_amu.iut.loginPrompt;
+package fr.univ_amu.iut.ui.loginPrompt;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

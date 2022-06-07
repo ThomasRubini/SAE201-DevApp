@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="837.0" prefWidth="1350.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.admin2.Controller">
+<AnchorPane prefHeight="837.0" prefWidth="1350.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.ui.admin2.Controller">
    <children>
       <ScrollPane id="acteurs" layoutX="14.0" layoutY="136.0" prefHeight="234.0" prefWidth="589.0" style="-fx-background-radius: 10;">
         <content>

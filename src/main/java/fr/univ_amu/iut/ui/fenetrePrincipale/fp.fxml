@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="root" prefHeight="860.0" prefWidth="1365.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.fp.Controller">
+<AnchorPane id="root" prefHeight="860.0" prefWidth="1365.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.ui.fenetrePrincipale.Controller">
    <children>
       <StackPane id="stackPaneFrance" fx:id="stackPaneFrance" layoutX="43.0" layoutY="92.0" prefHeight="649.0" prefWidth="642.0" style="-fx-background-color: blue;" />
       <AnchorPane layoutX="11.0" prefHeight="80.0" prefWidth="1019.0" style="-fx-background-color: #1e3d59#1e3d59;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

@@ -1,4 +1,4 @@
-package fr.univ_amu.iut.detailResultats;
+package fr.univ_amu.iut.ui.detailResultats;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
