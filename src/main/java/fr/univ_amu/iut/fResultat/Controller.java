@@ -10,43 +10,45 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import fr.univ_amu.iut.Donnees;
+import fr.univ_amu.iut.model.Usage;
 
 public class Controller implements Initializable{
 
     @FXML
-    private TableColumn<Utilisateur, String> Disciplines;
+    private TableView<TableEntry> table;
 
     @FXML
-    private TableColumn<Utilisateur, String> Niveaux;
+    private TableColumn<TableEntry, String> discipline;
 
     @FXML
-    private TableColumn<Utilisateur, String> Noms;
+    private TableColumn<TableEntry, String> niveau;
 
     @FXML
-    private TableColumn<Utilisateur, Integer> Numéro;
+    private TableColumn<TableEntry, String> nom;
 
     @FXML
-    private TableView<Utilisateur> Table;
-
-    @FXML
-    private TableColumn<Utilisateur, String> Types;
-
-    ObservableList<Utilisateur> list = FXCollections.observableArrayList(
-            new Utilisateur(1,"Patrik","Maht","Blog","Terminal"),
-            new Utilisateur(2,"Mark","Chimie","Site","Seconde")
-     );
+    private TableColumn<TableEntry, String> description;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Noms.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Noms"));
-        Numéro.setCellValueFactory(new PropertyValueFactory<Utilisateur, Integer>("Numéro"));
-        Disciplines.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Disciplines"));
-        Types.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Types"));
-        Niveaux.setCellValueFactory(new PropertyValueFactory<Utilisateur, String>("Niveaux"));
+        
 
-        Table.setItems(list);
-
-
+        List<TableEntry> entries = new ArrayList<>();
+        for (Usage usage: Donnees.getUsagesObtenus()){
+            entries.add(new TableEntry(usage));
+        }
+        ObservableList<TableEntry> tableEntries = FXCollections.observableArrayList(entries);
+        table.setItems(tableEntries);
+        
+        nom.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("nom"));
+        discipline.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("discipline"));
+        description.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("description"));
+        niveau.setCellValueFactory(new PropertyValueFactory<TableEntry, String>("niveau"));
+        
     }
+
 }
