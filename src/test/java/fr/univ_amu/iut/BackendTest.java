@@ -11,6 +11,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/*
+Tests unitaires servants à tester le backend JPA de l'application
+On utilise un JPA modifié (une persistenceUnit différente)
+afin de faire une base de données en mémoire*
+*/
+
+
 public class BackendTest {
 
 	private static DAOFactory daoFactory;
@@ -110,6 +117,10 @@ public class BackendTest {
 		assertThat(list.get(0).getNom()).isEqualTo("Second usage");
 	}
 
+	/*
+	On essaye d'insérer la même donnée de nouveau (2 fois pour être sûr,
+	après tout les tests sont faits pour vérifier que l'application est robuste)
+	 */
 	@Test
 	public void should_not_insert_again(){
 		daoFactory.createDAOThematique().insert(Thematique.ExpressionOrale);
