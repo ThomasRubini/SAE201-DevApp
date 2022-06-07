@@ -57,7 +57,7 @@ public class DAOUsageTest implements DAOUsage{
     }
 
     @Override
-    public List<Usage> findByName(String substring) {
+    public List<Usage> findByNamePart(String substring) {
         // TODO Auto-generated method stub
         return null;
     }
