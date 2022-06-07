@@ -16,12 +16,7 @@ public class DAOThematiqueTest implements DAOThematique {
 
     @Override
     public List<Thematique> findAll() {
-        List<Thematique> liste = new ArrayList<>();
-        for (int i = 0; i < 12; i++){
-            Thematique thematique = new Thematique("Thematique n° "+i);
-            liste.add(thematique);
-        }
-        return liste;
+        return Thematique.toutes();
     }
 
     @Override
