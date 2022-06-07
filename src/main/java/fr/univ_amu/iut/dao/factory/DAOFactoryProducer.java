@@ -6,7 +6,8 @@ import fr.univ_amu.iut.test.DAOFactoryTest;
 public class DAOFactoryProducer {
     public static DAOFactory getFactory(DAOType type) {
         return switch (type){
-            case JPA -> new DAOFactoryJPA();
+            case JPA -> new DAOFactoryJPA("gestionUsagesPU");
+            case JPA_MEMORY -> new DAOFactoryJPA("gestionUsagesPUMemory");
             case TEST -> new DAOFactoryTest();
             default -> throw new IllegalArgumentException();
         };
