@@ -1,10 +1,10 @@
 package fr.univ_amu.iut.admin2;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -21,6 +21,16 @@ public class Controller implements Initializable {
     @FXML
     private AnchorPane ressources;
 
+    @FXML
+    private MenuButton menuButton;
+    @FXML
+    private TextArea textMenuButton;
+    @FXML
+    MenuItem id1;
+    @FXML
+    MenuItem id2;
+    @FXML
+    MenuItem id3;
 
     private int cptActeur = 1;
     private int cptRessource = 1;
@@ -52,11 +62,6 @@ public class Controller implements Initializable {
         ++cptActeur;
 
     }
-    /*
-    *  <TextField fx:id="nomRessources" layoutX="13.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Nom" />
-       <TextField fx:id="lienRessources" layoutX="199.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Lien" />
-       <TextField fx:id="typeRessources" layoutX="379.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Type" />
-    * */
     private void addRessource(){
         TextField nom = new TextField();
         TextField lien = new TextField();
@@ -96,5 +101,8 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         addActeurs.setOnAction(actionEvent -> addActeur());
         addRessources.setOnAction(actionEvent -> addRessource());
+        id1.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès 1"));
+        id2.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès 2"));
+        id3.setOnAction(actionEvent -> textMenuButton.setPromptText("Degrès +"));
     }
 }

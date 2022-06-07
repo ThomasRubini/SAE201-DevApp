@@ -16,8 +16,8 @@
         <content>
           <AnchorPane fx:id="acteurs" minHeight="0.0" minWidth="0.0" prefHeight="234.0" prefWidth="590.0" style="-fx-background-color: #e5e0d1;">
                <children>
-                  <TextField id="nomActeur0" layoutX="13.0" layoutY="16.0" prefHeight="36.0" prefWidth="240.0" promptText="Nom" />
-                  <TextField id="typeActeur0" layoutX="310.0" layoutY="17.0" prefHeight="35.0" prefWidth="238.0" promptText="Type" />
+                  <TextField id="nomActeur0" fx:id="nomActeur0" layoutX="13.0" layoutY="16.0" prefHeight="36.0" prefWidth="240.0" promptText="Nom" />
+                  <TextField id="typeActeur0" fx:id="typeActeur0" layoutX="310.0" layoutY="17.0" prefHeight="35.0" prefWidth="238.0" promptText="Type" />
                </children>
             </AnchorPane>
         </content>
@@ -26,9 +26,9 @@
          <content>
             <AnchorPane fx:id="ressources" minHeight="0.0" minWidth="0.0" prefHeight="235.0" prefWidth="583.0" style="-fx-background-color: #e5e0d1 #e5e0d1;">
                <children>
-                  <TextField fx:id="nomRessources" layoutX="13.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Nom" />
-                  <TextField fx:id="lienRessources" layoutX="199.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Lien" />
-                  <TextField fx:id="typeRessources" layoutX="379.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Type" />
+                  <TextField fx:id="nomRessources0" layoutX="13.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Nom" />
+                  <TextField fx:id="lienRessources0" layoutX="199.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Lien" />
+                  <TextField fx:id="typeRessources0" layoutX="379.0" layoutY="18.0" prefHeight="36.0" prefWidth="170.0" promptText="Type" />
                </children>
             </AnchorPane>
          </content>
@@ -58,7 +58,7 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <TextArea layoutX="673.0" layoutY="450.0" prefHeight="174.0" prefWidth="496.0" AnchorPane.rightAnchor="181.0" />
+      <TextArea fx:id="description" layoutX="673.0" layoutY="450.0" prefHeight="174.0" prefWidth="496.0" AnchorPane.rightAnchor="181.0" />
       <Button layoutX="1150.0" layoutY="739.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="178.0" style="-fx-background-radius: 40;" text="VALIDER" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="22.0">
          <font>
             <Font size="18.0" />
@@ -69,13 +69,13 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <MenuButton layoutX="183.0" layoutY="432.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="145.0" style="-fx-background-radius: 10;" text="Degrès">
+      <MenuButton fx:id="menuButton" layoutX="183.0" layoutY="432.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="145.0" style="-fx-background-radius: 10;" text="Degrès">
         <items>
-          <MenuItem mnemonicParsing="false" text="1" />
-          <MenuItem mnemonicParsing="false" text="2" />
-            <MenuItem mnemonicParsing="false" text="+" />
+          <MenuItem fx:id="id1" mnemonicParsing="false" text="1" />
+          <MenuItem fx:id="id2" mnemonicParsing="false" text="2" />
+           <MenuItem fx:id="id3" mnemonicParsing="false" text="+" />
         </items>
       </MenuButton>
-      <TextArea layoutX="352.0" layoutY="442.0" prefHeight="28.0" prefWidth="39.0" />
+      <TextArea fx:id="textMenuButton" layoutX="352.0" layoutY="442.0" prefHeight="40.0" prefWidth="80.0"/>
    </children>
 </AnchorPane>
