@@ -57,7 +57,7 @@ public class Controller implements Initializable {
     // Style des boutons
     Background btNormalBackground = new Background(new BackgroundFill(Color.rgb(255, 110, 64), new CornerRadii(30), Insets.EMPTY));
     Background btNormalHover = new Background(new BackgroundFill(Color.rgb(255, 152, 120), new CornerRadii(30), Insets.EMPTY));
-    Background btNormalSelected = new Background(new BackgroundFill(Color.rgb(255, 60, 0), new CornerRadii(30), Insets.EMPTY));
+    Background btSelectedBackground = new Background(new BackgroundFill(Color.rgb(255, 60, 0), new CornerRadii(30), Insets.EMPTY));
 
     private void initFrance() {
         france = FranceBuilder.create()
@@ -105,27 +105,29 @@ public class Controller implements Initializable {
 
         onPressHandler = event -> {
             Button bt = (Button) event.getSource();
-            if (bt.getBackground().equals(btNormalSelected)) {
+            if (bt.getBackground().equals(btSelectedBackground)) {
                 bt.setBackground(btNormalHover);
                 bt.setOnMouseEntered(onEnterHandler);
+                bt.setOnMouseExited(onExitHandler);
             } else {
                 if (obj instanceof Discipline) {
                     for (int i = 0; i < discipline.getChildren().size(); ++i) {
-                        Button btChild = (Button) discipline.getChildren().get(i);
-                        btChild.setBackground(btNormalBackground);
-
-                        btChild.setOnMouseEntered(onEnterHandler);
+                        Button btLoop = (Button) discipline.getChildren().get(i);
+                        btLoop.setBackground(btNormalBackground);
+                        btLoop.setOnMouseEntered(onEnterHandler);
+                        btLoop.setOnMouseExited(onExitHandler);
                     }
                 } else {
                     for (int i = 0; i < thematique.getChildren().size(); ++i) {
-                        Button btChild = (Button) thematique.getChildren().get(i);
-                        btChild.setBackground(btNormalBackground);
-                        btChild.setOnMouseEntered(null);
+                        Button btLoop = (Button) thematique.getChildren().get(i);
+                        btLoop.setBackground(btNormalBackground);
+                        btLoop.setOnMouseEntered(onEnterHandler);
+                        btLoop.setOnMouseExited(onExitHandler);
                     }
                 }
-                bt.setBackground(btNormalSelected);
                 bt.setOnMouseEntered(null);
                 bt.setOnMouseExited(null);
+                bt.setBackground(btSelectedBackground);
             }
         };
 
