@@ -194,7 +194,7 @@ public class Controller implements Initializable {
         rechercheTextuelle.setOnAction(handleRechercheTextuelle);
 
 
-        EventHandler<ActionEvent> handleRechercheCrieters = event ->{
+        EventHandler<ActionEvent> handleRechercheCriterias = event ->{
             Donnees.setUsagesObtenus(daoUsage.findByCriterias(Donnees.getThematiqueSelectionee(),Donnees.getDisciplineSelectionee(),Donnees.getAcademieSelectionee()));
             Stage resultats = new Stage();
             try {
@@ -204,12 +204,12 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
         };
-        recherche.setOnAction(handleRechercheCrieters);
+        recherche.setOnAction(handleRechercheCriterias);
 
         EventHandler<ActionEvent> loginPrompt = event ->{
             Stage loginWindow = new Stage();
             try {
-                loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/loginPrompt/Code_acces.fxml"))));
+                loginWindow.setScene(new Scene(FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/loginPrompt/Code_accessa.fxml"))));
                 loginWindow.show();
             } catch (IOException e) {
                 e.printStackTrace();
