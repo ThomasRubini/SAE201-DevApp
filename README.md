@@ -1,19 +1,22 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7908914&assignment_repo_type=AssignmentRepo)
-# <img src="https://raw.githubusercontent.com/IUTInfoAix-M2105/Syllabus/master/assets/logo.png" alt="class logo" class="logo"/> Développement d'application SAE 2.01
+**SAE 2.01, TEAM COMCOMBRE**
 
-## IUT d’Aix-Marseille – Département Informatique Aix-en-Provence
+Dans ce README, nous allons essayer de résumer rapidement tout ce que nous avons fait lors de cette SAE, afin de vous faciliter la compréhension du code
+(Nous n'aurons peut-être pas le temps de tout expliquer ici)
 
-- **Ressource:** [R2.02](https://cache.media.enseignementsup-recherche.gouv.fr/file/SPE4-MESRI-17-6-2021/35/5/Annexe_17_INFO_BUT_annee_1_1411355.pdf)
-- **Responsables:**
-  - [Sébastien Nedjar](mailto:sebastien.nedjar@univ-amu.fr)
-  - [Cyril Pain-Barre](mailto:cyril.pain-barre@univ-amu.fr)
-- **Besoin d'aide ?**
-  - Consulter et/ou créer des [issues](https://github.com/IUTInfoAix-R202/cours/issues).
-  - [Email](mailto:sebastien.nedjar@univ-amu.fr) pour une question d'ordre privée, ou pour convenir d'un rendez-vous physique.
+## Interface :
 
-## Création de votre fork
+Notre interface peut se découper en trois fenêtres (notez le mot "fenêtre, car une fenêtre séparée ouvre effectivement)
 
-La première chose que vous allez faire est de créer un fork d'un dépôt. Pour ce faire, rendez-vous sur le lien suivant :
-<https://classroom.github.com/a/VC0pQrhm>
+## DAO :
+Le DAO est l'un des points forts de notre projet. Nous disposons de 3 DAO : JPA, JPA_MEMORY, et TEST
+- JPA est le DAO utilisé officiellement par l'application lors de son exécution par un utilisateur
+Les classes de ce DAO se trouvent dans le package `dao.jpa`
+- JPA_MEMORY est un DAO très similaire à JPA (il se sert des mêmes classes), à l'exception qu'il utilise une autre PersistenceUnit (voir persistence.xml) afin de faire une base de données en mémoire, qui est utilisée lors du test backend (voir BackendTest.java)
+Les classes de ce DAO sont les mêmes que le DAO JPA
+- TEST est un DAO ne reposant sur aucune base de données, les méthodes DAO crééent et renvoient eux-mêmes les données. ce DAO est utilisé pour le test de l'interface utilisateur (afin de ne pas le coupler à une base de données)
+Les classes de ce DAO se trouvent dans le package `dao.test`
 
-Vous devrez créer un fork par équipe. Une fois le fork créé, vous devrez ajouter manuellement vos collègues comme propriétaire du dépôt.
+## Tests :
+Comme dit précédemment, les tests de l'application sont séparés en deux parties : Backend, et Application
+- Les tests Backend servent à tester le DAO de manière isolée de l'application. Nous testons la structure du DAO, mais également les requêtes SQL faites.
+- Les tests d'Application servent à tester l'application, certains sont isolés du DAO, et d'autres utilisent le DAO TEST afin d'être encore découplés de la base de données.
