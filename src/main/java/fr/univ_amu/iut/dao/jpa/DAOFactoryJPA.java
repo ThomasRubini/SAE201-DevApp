@@ -17,34 +17,39 @@ public class DAOFactoryJPA implements DAOFactory {
 
     private EntityManager entityManager;
 
-
-    // Pas sûr de ou initialiser la base de données
-    /*
-     On part du principe que les données dans la base de données sont inconnues :
-     certaines données peuvent être insérées et d'autres non. Nous faisons attention aux erreurs
-     Nous essayons d'être persistents aux erreurs
-     */
+    private String unitName;
 
 
+    // Nous ne sommes pas sûrs de ou initialiser la base de données
     private <T> void insertAllHelper(DAO<T> dao, Collection<T> list){
         if(dao.findAll().size()==0){
             entityManager.getTransaction().begin();
-            list.forEach(obj -> entityManager.persist(obj));
+            System.out.println("LOOP");
+            System.out.flush();
+            for(var a : list){
+                entityManager.persist(a);
+            }
+//            list.forEach(obj -> entityManager.persist(obj));
             entityManager.getTransaction().commit();
         }
     }
 
-    public DAOFactoryJPA(){
+    public DAOFactoryJPA(String unitName){
+        this.unitName = unitName;
+
 
         insertAllHelper(createDAORegionAcademique(), RegionAcademique.toutes());
         insertAllHelper(createDAOAcademie(), Academie.toutes());
         insertAllHelper(createDAOThematique(), Thematique.toutes());
         insertAllHelper(createDAODiscipline(), Discipline.toutes());
     }
+    public DAOFactoryJPA(){
+        this("gestionUsagesPU");
+    }
 
     public EntityManager getEntityManager() {
         if(entityManager == null){
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("gestionUsagesPU");
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(unitName);
             entityManager = entityManagerFactory.createEntityManager();
         }
         return entityManager;

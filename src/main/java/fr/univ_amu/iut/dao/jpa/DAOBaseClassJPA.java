@@ -14,42 +14,25 @@ public abstract class DAOBaseClassJPA<T> implements DAO<T> {
 	}
 
 	public boolean insert(T etudiant) {
-		try{
-			entityManager.getTransaction().begin();
-			entityManager.persist(etudiant);
-			entityManager.getTransaction().commit();
-
-			return true;
-		}catch(Exception e){
-			e.printStackTrace();
-			return false;
-		}
+		entityManager.getTransaction().begin();
+		entityManager.persist(etudiant);
+		entityManager.getTransaction().commit();
+		return true;
 	}
 
 	public boolean update(T obj) {
-		try {
-			entityManager.getTransaction().begin();
-			entityManager.merge(obj);
-			entityManager.getTransaction().commit();
-
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		entityManager.getTransaction().begin();
+		entityManager.merge(obj);
+		entityManager.getTransaction().commit();
+		return true;
 	}
 
 	@Override
 	public boolean delete(T obj) {
-		try {
-			entityManager.getTransaction().begin();
-			entityManager.remove(obj);
-			entityManager.getTransaction().commit();
+		entityManager.getTransaction().begin();
+		entityManager.remove(obj);
+		entityManager.getTransaction().commit();
 
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		return true;
 	}
 }
