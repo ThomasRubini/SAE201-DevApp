@@ -9,7 +9,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Usage.findAll", query = "SELECT p FROM Usage p"),
         @NamedQuery(name = "Usage.findById", query = "SELECT p FROM Usage p WHERE p.id = :id"),
-        @NamedQuery(name = "Usage.findByName", query = "SELECT p FROM Usage p WHERE p.nom LIKE :substring"),
+        @NamedQuery(name = "Usage.findByNamePart", query = "SELECT p FROM Usage p WHERE LOWER(p.nom) LIKE :substring"),
         @NamedQuery(name = "Usage.findByCriterias", query = "SELECT p FROM Usage p WHERE" +
                 "(:thematique is null or :thematique=p.thematique)" +
                 "AND (:discipline is null or :discipline=p.discipline)"+
