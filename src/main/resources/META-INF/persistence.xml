@@ -21,7 +21,7 @@
             <property name="eclipselink.logging.parameters" value="true"/>
         </properties>
     </persistence-unit>
-    <persistence-unit name="gestionUsagesPUTest" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="gestionUsagesPUMemory" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 

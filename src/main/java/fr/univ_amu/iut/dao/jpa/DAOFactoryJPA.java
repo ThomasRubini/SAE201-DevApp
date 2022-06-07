@@ -37,14 +37,10 @@ public class DAOFactoryJPA implements DAOFactory {
     public DAOFactoryJPA(String unitName){
         this.unitName = unitName;
 
-
         insertAllHelper(createDAORegionAcademique(), RegionAcademique.toutes());
         insertAllHelper(createDAOAcademie(), Academie.toutes());
         insertAllHelper(createDAOThematique(), Thematique.toutes());
         insertAllHelper(createDAODiscipline(), Discipline.toutes());
-    }
-    public DAOFactoryJPA(){
-        this("gestionUsagesPU");
     }
 
     public EntityManager getEntityManager() {

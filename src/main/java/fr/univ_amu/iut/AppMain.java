@@ -9,12 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class AppMain extends Application {
     private Scene scene = new Scene(new Pane());
     private ScreenController gestionnaireDePages = new ScreenController(scene);
 
+    public static boolean testMode;
+
     @Override
     public void start(Stage stage) throws IOException{
+
+        String res = getParameters().getNamed().get("testMode");
+        testMode = res!=null&&res.equals("true");
+
+
         ScreenController.addScreen("Acceuil",FXMLLoader.load(getClass().getResource("/fr/univ_amu/iut/fp/fp.fxml")));
         
         //TODO Ajouter les pages d'admin pour l'ajout des usages
@@ -28,7 +35,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread.sleep(5000);
         launch(args);
     }
 }
