@@ -1,11 +1,6 @@
 **SAE 2.01, TEAM COMCOMBRE**
 
-Dans ce README, nous allons essayer de résumer rapidement tout ce que nous avons fait lors de cette SAE, afin de vous faciliter la compréhension du code
-(Nous n'aurons peut-être pas le temps de tout expliquer ici)
-
-## Interface :
-
-Notre interface peut se découper en trois fenêtres (notez le mot "fenêtre, car une fenêtre séparée ouvre effectivement)
+Dans ce README, nous allons essayer de résumer quelque uns des éléments que nous avons faits dans cette SAE
 
 ## DAO :
 Le DAO est l'un des points forts de notre projet. Nous disposons de 3 DAO : JPA, JPA_MEMORY, et TEST
