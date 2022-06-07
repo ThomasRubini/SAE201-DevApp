@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="837.0" prefWidth="1350.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.admin2.Controller">
+<AnchorPane prefHeight="837.0" prefWidth="1350.0" style="-fx-background-color: #f5f0e1#f5f0e1;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univ_amu.iut.admin2.Controller">
    <children>
       <ScrollPane id="acteurs" layoutX="14.0" layoutY="136.0" prefHeight="234.0" prefWidth="589.0" style="-fx-background-radius: 10;">
         <content>
@@ -47,20 +53,6 @@
             <Font size="26.0" />
          </font>
       </Button>
-      <Text layoutX="45.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Degrès" wrappingWidth="173">
-         <font>
-            <Font size="31.0" />
-         </font>
-      </Text>
-      <ScrollPane layoutX="45.0" layoutY="450.0" prefHeight="84.0" prefWidth="273.0" style="-fx-background-radius: 10;">
-         <content>
-            <AnchorPane fx:id="lienRessources" minHeight="0.0" minWidth="0.0" prefHeight="83.0" prefWidth="273.0" style="-fx-background-color: #e5e0d1;">
-               <children>
-                  <Button layoutX="18.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="223.0" style="-fx-background-radius: 30;" />
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
       <Text layoutX="675.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="194.92605590820312" AnchorPane.rightAnchor="480.0739440917969">
          <font>
             <Font size="31.0" />
@@ -77,5 +69,13 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <MenuButton layoutX="183.0" layoutY="432.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="145.0" style="-fx-background-radius: 10;" text="Degrès">
+        <items>
+          <MenuItem mnemonicParsing="false" text="1" />
+          <MenuItem mnemonicParsing="false" text="2" />
+            <MenuItem mnemonicParsing="false" text="+" />
+        </items>
+      </MenuButton>
+      <TextArea layoutX="352.0" layoutY="442.0" prefHeight="28.0" prefWidth="39.0" />
    </children>
 </AnchorPane>
